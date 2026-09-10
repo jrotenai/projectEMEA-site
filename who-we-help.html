@@ -48,11 +48,6 @@
   nav.links a.active{color:var(--gold);font-weight:600;}
   nav.links a.active::after{transform:scaleX(1);}
   .nav-right{display:flex;align-items:center;gap:16px;}
-  .lang-switch{display:flex;gap:4px;font-family:var(--font-mono);font-size:.72rem;}
-  .lang-switch button{background:none;border:1px solid var(--line);border-radius:5px;color:var(--ink-soft);
-    padding:4px 7px;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
-  .lang-switch button:hover{color:var(--ink);}
-  .lang-switch button.active{border-color:var(--gold);color:var(--gold);}
   .nav-cta{background:var(--gold);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
     font-size:.85rem;font-family:var(--font-body);font-weight:600;cursor:pointer;text-decoration:none;
     display:inline-block;white-space:nowrap;transition:background .15s,transform .15s;}
@@ -71,9 +66,6 @@
     .nav-cta{display:none;}
     .brand{font-size:.72rem;gap:7px;}
     .brand svg{width:22px;height:22px;}
-  }
-  @media (max-width:380px){
-    .lang-switch{display:none;}
   }
 
   .hero{padding:clamp(48px,6vw,84px) 0 clamp(40px,5vw,64px);text-align:center;}
@@ -234,7 +226,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" data-internal>
+    <a class="brand" href="index.html">
       <svg viewBox="0 0 40 40" aria-hidden="true">
         <circle cx="20" cy="20" r="18" fill="none" stroke="#d5d9d1" stroke-width="1.2"/>
         <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#9c7a2e"/>
@@ -247,20 +239,15 @@
     </a>
     
     <nav class="links">
-      <a href="who-we-help.html" data-internal class=" active" data-i18n="nav.who">Who We Help</a>
-      <a href="how-we-work.html" data-internal class="" data-i18n="nav.how">How We Work</a>
-      <a href="engagement-models.html" data-internal class="" data-i18n="nav.engagement">Engagement Models</a>
-      <a href="contact.html" data-internal class="" data-i18n="nav.contact">Contact</a>
+      <a href="who-we-help.html" class=" active">Who We Help</a>
+      <a href="how-we-work.html" class="">How We Work</a>
+      <a href="engagement-models.html" class="">Engagement Models</a>
+      <a href="contact.html" class="">Contact</a>
     </nav>
     
     <div class="nav-right">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button data-lang-btn="en" type="button">EN</button>
-        <button data-lang-btn="es" type="button">ES</button>
-        <button data-lang-btn="fr" type="button">FR</button>
-      </div>
-      <button class="menu-toggle" type="button" data-i18n="menu.open">Menu</button>
-      <a class="nav-cta" href="contact.html" data-internal data-i18n="nav.cta">Talk to us</a>
+      <button class="menu-toggle" type="button">Menu</button>
+      <a class="nav-cta" href="contact.html">Talk to us</a>
     </div>
   </div>
 </header>
@@ -269,8 +256,8 @@
 
 <section class="page-header">
   <div class="wrap">
-    <h1 data-i18n="nav.who">Who We Help</h1>
-    <p data-i18n="intro">Three kinds of company bring us in. See which one sounds like you.</p>
+    <h1>Who We Help</h1>
+    <p>Three kinds of company bring us in. See which one sounds like you.</p>
   </div>
 </section>
 <section class="tight">
@@ -278,55 +265,55 @@
     
     <div class="segment-full" data-reveal>
       <div>
-        <p class="tag" data-i18n="s1.tag">First Flag</p>
-        <h3 data-i18n="s1.sub">First-time entrants — no EMEA presence yet, still deciding whether to commit.</h3>
+        <p class="tag">First Flag</p>
+        <h3>First-time entrants — no EMEA presence yet, still deciding whether to commit.</h3>
       </div>
       <div class="segment-body">
         <dl>
-          <dt data-i18n="s1.situation.label">The situation</dt>
-          <dd data-i18n="s1.situation">You know Europe is a growth opportunity but can't justify hiring a VP of EMEA or opening an office before validating a single market.</dd>
-          <dt data-i18n="s1.getlabel">What you get</dt>
-          <dd data-i18n="s1.get">Validate two or three European markets and start generating pipeline before committing to permanent headcount or infrastructure.</dd>
-          <dt data-i18n="s1.whylabel">Why it works</dt>
-          <dd data-i18n="s1.why">The Understand → Launch phases are built exactly for this: market and route-to-market validation before commercial commitment.</dd>
+          <dt>The situation</dt>
+          <dd>You know Europe is a growth opportunity but can't justify hiring a VP of EMEA or opening an office before validating a single market.</dd>
+          <dt>What you get</dt>
+          <dd>Validate two or three European markets and start generating pipeline before committing to permanent headcount or infrastructure.</dd>
+          <dt>Why it works</dt>
+          <dd>The Understand → Launch phases are built exactly for this: market and route-to-market validation before commercial commitment.</dd>
         </dl>
-        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+        <a href="contact.html" class="card-link">Tell us about your plan →</a>
       </div>
     </div>
 
     <div class="segment-full" data-reveal>
       <div>
-        <p class="tag" data-i18n="s2.tag">First Flag</p>
-        <h3 data-i18n="s2.sub">Already earning EU revenue, but growth has plateaued without local execution.</h3>
+        <p class="tag">Stalled Bridgehead</p>
+        <h3>Already earning EU revenue, but growth has plateaued without local execution.</h3>
       </div>
       <div class="segment-body">
         <dl>
-          <dt data-i18n="s1.situation.label">The situation</dt>
-          <dd data-i18n="s2.situation">Revenue proves demand exists, but with no one on the ground to run enterprise sales cycles or manage renewals, growth has stalled.</dd>
-          <dt data-i18n="s1.getlabel">What you get</dt>
-          <dd data-i18n="s2.get">Turn existing but unmanaged European revenue into a repeatable, growing book of business — without a permanent European team.</dd>
-          <dt data-i18n="s1.whylabel">Why it works</dt>
-          <dd data-i18n="s2.why">The Grow → Retain phases target this directly: qualified pipeline, enterprise deal progression, and account expansion.</dd>
+          <dt>The situation</dt>
+          <dd>Revenue proves demand exists, but with no one on the ground to run enterprise sales cycles or manage renewals, growth has stalled.</dd>
+          <dt>What you get</dt>
+          <dd>Turn existing but unmanaged European revenue into a repeatable, growing book of business — without a permanent European team.</dd>
+          <dt>Why it works</dt>
+          <dd>The Grow → Retain phases target this directly: qualified pipeline, enterprise deal progression, and account expansion.</dd>
         </dl>
-        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+        <a href="contact.html" class="card-link">Tell us about your plan →</a>
       </div>
     </div>
 
     <div class="segment-full" data-reveal>
       <div>
-        <p class="tag" data-i18n="s3.tag">First Flag</p>
-        <h3 data-i18n="s3.sub">VC-backed, under investor pressure to show EMEA traction before the next raise.</h3>
+        <p class="tag">Board-Pressure Sprint</p>
+        <h3>VC-backed, under investor pressure to show EMEA traction before the next raise.</h3>
       </div>
       <div class="segment-body">
         <dl>
-          <dt data-i18n="s1.situation.label">The situation</dt>
-          <dd data-i18n="s3.situation">The board wants a European growth story for the next raise, but you can't afford to burn six figures on an office before knowing if it will work.</dd>
-          <dt data-i18n="s1.getlabel">What you get</dt>
-          <dd data-i18n="s3.get">Build a credible, evidence-backed European growth story — pipeline, logos, momentum — in the time window a raise actually allows.</dd>
-          <dt data-i18n="s1.whylabel">Why it works</dt>
-          <dd data-i18n="s3.why">Success-based commercial incentives align the engagement directly with the traction the board wants to see.</dd>
+          <dt>The situation</dt>
+          <dd>The board wants a European growth story for the next raise, but you can't afford to burn six figures on an office before knowing if it will work.</dd>
+          <dt>What you get</dt>
+          <dd>Build a credible, evidence-backed European growth story — pipeline, logos, momentum — in the time window a raise actually allows.</dd>
+          <dt>Why it works</dt>
+          <dd>Success-based commercial incentives align the engagement directly with the traction the board wants to see.</dd>
         </dl>
-        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+        <a href="contact.html" class="card-link">Tell us about your plan →</a>
       </div>
     </div>
 
@@ -334,71 +321,24 @@
 </section>
 <section class="tight">
   <div class="wrap">
-    <div class="guardrails" data-reveal><p data-i18n="guardrails">We work with Series A/B technology companies — and strong late-seed teams with clear commercial traction. We don't work with fintech.</p></div>
+    <div class="guardrails" data-reveal><p>We work with Series A/B technology companies — and strong late-seed teams with clear commercial traction. We don't work with fintech.</p></div>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="wrap"><p data-i18n="footer.text">Project EMEA · ProjectEMEA.eu · English · Español · Français</p></div>
+  <div class="wrap"><p>Project EMEA · ProjectEMEA.eu</p></div>
 </footer>
 
 <script>
 
 (function(){
-  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "intro": "Three kinds of company bring us in. See which one sounds like you.", "s1.tag": "First Flag", "s1.sub": "First-time entrants — no EMEA presence yet, still deciding whether to commit.", "s1.situation.label": "The situation", "s1.situation": "You know Europe is a growth opportunity but can't justify hiring a VP of EMEA or opening an office before validating a single market.", "s1.getlabel": "What you get", "s1.get": "Validate two or three European markets and start generating pipeline before committing to permanent headcount or infrastructure.", "s1.whylabel": "Why it works", "s1.why": "The Understand → Launch phases are built exactly for this: market and route-to-market validation before commercial commitment.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Already earning EU revenue, but growth has plateaued without local execution.", "s2.situation": "Revenue proves demand exists, but with no one on the ground to run enterprise sales cycles or manage renewals, growth has stalled.", "s2.get": "Turn existing but unmanaged European revenue into a repeatable, growing book of business — without a permanent European team.", "s2.why": "The Grow → Retain phases target this directly: qualified pipeline, enterprise deal progression, and account expansion.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "VC-backed, under investor pressure to show EMEA traction before the next raise.", "s3.situation": "The board wants a European growth story for the next raise, but you can't afford to burn six figures on an office before knowing if it will work.", "s3.get": "Build a credible, evidence-backed European growth story — pipeline, logos, momentum — in the time window a raise actually allows.", "s3.why": "Success-based commercial incentives align the engagement directly with the traction the board wants to see.", "s.cta": "Tell us about your plan →", "guardrails": "We work with Series A/B technology companies — and strong late-seed teams with clear commercial traction. We don't work with fintech."}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "intro": "Nos suelen llamar tres tipos de empresa. Descubre cuál se parece a ti.", "s1.tag": "First Flag", "s1.sub": "Empresas que llegan por primera vez a Europa — sin presencia en EMEA todavía, decidiendo si dar el paso.", "s1.situation.label": "La situación", "s1.situation": "Sabes que Europa es una oportunidad de crecimiento, pero no puedes justificar contratar a un VP de EMEA ni abrir una oficina antes de validar un solo mercado.", "s1.getlabel": "Qué obtienes", "s1.get": "Valida dos o tres mercados europeos y empieza a generar pipeline antes de comprometerte con contrataciones permanentes o infraestructura.", "s1.whylabel": "Por qué funciona", "s1.why": "Las fases Understand → Launch están hechas exactamente para esto: validar el mercado y la vía de entrada antes del compromiso comercial.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Ya facturas en la UE, pero el crecimiento se ha estancado por falta de ejecución local.", "s2.situation": "Los ingresos demuestran que hay demanda, pero sin nadie sobre el terreno para llevar los ciclos de venta empresarial o gestionar renovaciones, el crecimiento se ha frenado.", "s2.get": "Convierte esos ingresos europeos existentes pero sin gestionar en una cartera de negocio repetible y creciente, sin montar un equipo europeo permanente.", "s2.why": "Las fases Grow → Retain se dirigen directamente a esto: pipeline cualificado, avance de operaciones empresariales y expansión de cuentas.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "Respaldada por venture capital, bajo presión de los inversores para mostrar tracción en EMEA antes de la próxima ronda.", "s3.situation": "El consejo quiere una historia de crecimiento europeo para la próxima ronda, pero no te puedes permitir quemar seis cifras en una oficina antes de saber si va a funcionar.", "s3.get": "Construye una historia de crecimiento europeo creíble y respaldada por evidencia — pipeline, logos, impulso — en el plazo que realmente permite una ronda.", "s3.why": "Los incentivos comerciales por resultados alinean el proyecto directamente con la tracción que el consejo quiere ver.", "s.cta": "Cuéntanos tu plan →", "guardrails": "Trabajamos con tecnológicas en Series A/B, y con equipos de late-seed sólido con tracción comercial clara. No trabajamos con fintech."}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "intro": "Trois types d'entreprises font appel à nous. Voyez laquelle vous ressemble.", "s1.tag": "First Flag", "s1.sub": "Primo-entrants — pas encore de présence EMEA, encore en train de décider.", "s1.situation.label": "La situation", "s1.situation": "Vous savez que l'Europe est une opportunité de croissance, mais vous ne pouvez pas justifier l'embauche d'un VP EMEA ou l'ouverture d'un bureau avant d'avoir validé un seul marché.", "s1.getlabel": "Ce que vous obtenez", "s1.get": "Validez deux ou trois marchés européens et commencez à générer du pipeline avant de vous engager sur des effectifs ou une infrastructure permanents.", "s1.whylabel": "Pourquoi ça marche", "s1.why": "Les phases Understand → Launch sont construites exactement pour cela : valider le marché et la voie d'accès avant tout engagement commercial.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Vous générez déjà du revenu en Europe, mais la croissance a plafonné sans exécution locale.", "s2.situation": "Le revenu prouve qu'il y a une demande, mais sans personne sur le terrain pour piloter les cycles de vente entreprise ou gérer les renouvellements, la croissance s'est arrêtée.", "s2.get": "Transformez ce revenu européen existant mais non piloté en un portefeuille d'affaires répétable et croissant, sans monter une équipe européenne permanente.", "s2.why": "Les phases Grow → Retain ciblent directement cela : pipeline qualifié, avancement des deals entreprise et expansion des comptes.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "Soutenue par du capital-risque, sous pression des investisseurs pour montrer une traction EMEA avant la prochaine levée.", "s3.situation": "Le conseil d'administration veut une histoire de croissance européenne pour la prochaine levée, mais vous ne pouvez pas vous permettre de brûler six chiffres dans un bureau avant de savoir si cela va fonctionner.", "s3.get": "Construisez une histoire de croissance européenne crédible et étayée par des preuves — pipeline, références, dynamique — dans le délai qu'une levée impose réellement.", "s3.why": "Les incitations commerciales liées aux résultats alignent la mission directement sur la traction que le conseil veut voir.", "s.cta": "Parlez-nous de votre projet →", "guardrails": "Nous travaillons avec des entreprises tech en Series A/B, et avec des équipes late-seed solides à la traction commerciale claire. Nous ne travaillons pas avec la fintech."}};
-  var LANGS = ['en','es','fr'];
-  function getLang(){
-    try{
-      var q = new URLSearchParams(location.search).get('lang');
-      if (LANGS.indexOf(q) !== -1) return q;
-    }catch(e){}
-    try{
-      var stored = localStorage.getItem('pe_lang');
-      if (LANGS.indexOf(stored) !== -1) return stored;
-    }catch(e){}
-    return 'en';
-  }
-  function applyLang(lang){
-    if (LANGS.indexOf(lang) === -1) lang = 'en';
-    document.documentElement.setAttribute('lang', lang);
-    var dict = I18N[lang] || I18N.en;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-      else if (I18N.en[key] !== undefined) el.innerHTML = I18N.en[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-ph');
-      var val = dict[key] !== undefined ? dict[key] : I18N.en[key];
-      if (val !== undefined) el.setAttribute('placeholder', val);
-    });
-    document.querySelectorAll('a[data-internal]').forEach(function(a){
-      try{
-        var base = a.getAttribute('data-href') || a.getAttribute('href');
-        if (!a.getAttribute('data-href')) a.setAttribute('data-href', base);
-        var url = new URL(base, location.href);
-        url.searchParams.set('lang', lang);
-        a.setAttribute('href', url.toString());
-      }catch(e){}
-    });
-    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
-    });
-    try{ localStorage.setItem('pe_lang', lang); }catch(e){}
-  }
-  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang-btn')); });
-  });
   var menuBtn = document.querySelector('.menu-toggle');
   var navLinks = document.querySelector('nav.links');
   if (menuBtn && navLinks){
     menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
   }
-  window.PE_I18N = I18N;
-  applyLang(getLang());
-  window.__PE_APPLY_LANG__ = applyLang;
 
   // --- Scroll-reveal for below-the-fold content ---
   (function(){

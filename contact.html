@@ -48,11 +48,6 @@
   nav.links a.active{color:var(--gold);font-weight:600;}
   nav.links a.active::after{transform:scaleX(1);}
   .nav-right{display:flex;align-items:center;gap:16px;}
-  .lang-switch{display:flex;gap:4px;font-family:var(--font-mono);font-size:.72rem;}
-  .lang-switch button{background:none;border:1px solid var(--line);border-radius:5px;color:var(--ink-soft);
-    padding:4px 7px;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
-  .lang-switch button:hover{color:var(--ink);}
-  .lang-switch button.active{border-color:var(--gold);color:var(--gold);}
   .nav-cta{background:var(--gold);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
     font-size:.85rem;font-family:var(--font-body);font-weight:600;cursor:pointer;text-decoration:none;
     display:inline-block;white-space:nowrap;transition:background .15s,transform .15s;}
@@ -71,9 +66,6 @@
     .nav-cta{display:none;}
     .brand{font-size:.72rem;gap:7px;}
     .brand svg{width:22px;height:22px;}
-  }
-  @media (max-width:380px){
-    .lang-switch{display:none;}
   }
 
   .hero{padding:clamp(48px,6vw,84px) 0 clamp(40px,5vw,64px);text-align:center;}
@@ -234,7 +226,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" data-internal>
+    <a class="brand" href="index.html">
       <svg viewBox="0 0 40 40" aria-hidden="true">
         <circle cx="20" cy="20" r="18" fill="none" stroke="#d5d9d1" stroke-width="1.2"/>
         <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#9c7a2e"/>
@@ -247,20 +239,15 @@
     </a>
     
     <nav class="links">
-      <a href="who-we-help.html" data-internal class="" data-i18n="nav.who">Who We Help</a>
-      <a href="how-we-work.html" data-internal class="" data-i18n="nav.how">How We Work</a>
-      <a href="engagement-models.html" data-internal class="" data-i18n="nav.engagement">Engagement Models</a>
-      <a href="contact.html" data-internal class=" active" data-i18n="nav.contact">Contact</a>
+      <a href="who-we-help.html" class="">Who We Help</a>
+      <a href="how-we-work.html" class="">How We Work</a>
+      <a href="engagement-models.html" class="">Engagement Models</a>
+      <a href="contact.html" class=" active">Contact</a>
     </nav>
     
     <div class="nav-right">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button data-lang-btn="en" type="button">EN</button>
-        <button data-lang-btn="es" type="button">ES</button>
-        <button data-lang-btn="fr" type="button">FR</button>
-      </div>
-      <button class="menu-toggle" type="button" data-i18n="menu.open">Menu</button>
-      <a class="nav-cta" href="contact.html" data-internal data-i18n="nav.cta">Talk to us</a>
+      <button class="menu-toggle" type="button">Menu</button>
+      <a class="nav-cta" href="contact.html">Talk to us</a>
     </div>
   </div>
 </header>
@@ -269,8 +256,8 @@
 
 <section class="page-header">
   <div class="wrap">
-    <h1 data-i18n="title">Contact</h1>
-    <p data-i18n="intro">Tell us about your business and where you're headed in Europe. We'll get back to you within two business days.</p>
+    <h1>Contact</h1>
+    <p>Tell us about your business and where you're headed in Europe. We'll get back to you within two business days.</p>
   </div>
 </section>
 <section class="tight">
@@ -278,40 +265,40 @@
     <div class="contact-grid">
       <form class="contact-form" id="pe-contact-form">
         <div class="field">
-          <label for="f-name" data-i18n="f.name">Name</label>
+          <label for="f-name">Name</label>
           <input type="text" id="f-name" name="name" required>
         </div>
         <div class="field">
-          <label for="f-company" data-i18n="f.company">Company</label>
+          <label for="f-company">Company</label>
           <input type="text" id="f-company" name="company" required>
         </div>
         <div class="field">
-          <label for="f-email" data-i18n="f.email">Work email</label>
+          <label for="f-email">Work email</label>
           <input type="email" id="f-email" name="email" required>
         </div>
         <div class="field">
-          <label for="f-segment" data-i18n="f.segment">Which sounds like you?</label>
+          <label for="f-segment">Which sounds like you?</label>
           <select id="f-segment" name="segment">
-            <option data-i18n="f.segment.opt0" value="First Flag">First Flag</option>
-            <option data-i18n="f.segment.opt1" value="Stalled Bridgehead">Stalled Bridgehead</option>
-            <option data-i18n="f.segment.opt2" value="Board-Pressure Sprint">Board-Pressure Sprint</option>
-            <option data-i18n="f.segment.opt3" value="Not sure yet" selected>Not sure yet</option>
+            <option value="First Flag">First Flag</option>
+            <option value="Stalled Bridgehead">Stalled Bridgehead</option>
+            <option value="Board-Pressure Sprint">Board-Pressure Sprint</option>
+            <option value="Not sure yet" selected>Not sure yet</option>
           </select>
         </div>
         <div class="field">
-          <label for="f-message" data-i18n="f.message">Message</label>
+          <label for="f-message">Message</label>
           <textarea id="f-message" name="message" required></textarea>
         </div>
-        <button type="submit" class="btn-primary" data-i18n="f.submit">Send message</button>
-        <p class="form-note show" data-i18n="form.hint">This opens your email client with these details pre-filled — nothing sends until you hit send there.</p>
+        <button type="submit" class="btn-primary">Send message</button>
+        <p class="form-note show">This opens your email client with these details pre-filled — nothing sends until you hit send there.</p>
       </form>
       <div class="direct-contact">
-        <h3 data-i18n="direct.title">Direct contact</h3>
-        <p data-i18n="direct.note">Prefer email? Reach us directly.</p>
+        <h3>Direct contact</h3>
+        <p>Prefer email? Reach us directly.</p>
         <p><span class="value">[Contact name]</span></p>
         <p><span class="value">hello@projectemea.eu</span></p>
         <p><span class="value">ProjectEMEA.eu</span></p>
-        <p style="font-family:var(--font-mono);font-size:.7rem;color:var(--teal);text-transform:uppercase;letter-spacing:.03em;margin-top:12px;" data-i18n="direct.placeholder">Placeholder — swap in real contact details before launch.</p>
+        <p style="font-family:var(--font-mono);font-size:.7rem;color:var(--teal);text-transform:uppercase;letter-spacing:.03em;margin-top:12px;">Placeholder — swap in real contact details before launch.</p>
       </div>
     </div>
   </div>
@@ -320,64 +307,17 @@
 </main>
 
 <footer>
-  <div class="wrap"><p data-i18n="footer.text">Project EMEA · ProjectEMEA.eu · English · Español · Français</p></div>
+  <div class="wrap"><p>Project EMEA · ProjectEMEA.eu</p></div>
 </footer>
 
 <script>
 
 (function(){
-  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Contact", "intro": "Tell us about your business and where you're headed in Europe. We'll get back to you within two business days.", "f.name": "Name", "f.company": "Company", "f.email": "Work email", "f.segment": "Which sounds like you?", "f.segment.opt0": "First Flag", "f.segment.opt1": "Stalled Bridgehead", "f.segment.opt2": "Board-Pressure Sprint", "f.segment.opt3": "Not sure yet", "f.message": "Message", "f.submit": "Send message", "f.sending": "Sending…", "f.sent": "Thanks — we've got your message and will be in touch within two business days.", "f.error": "Something went wrong sending that — please try again, or email us directly at hello@projectemea.eu.", "direct.title": "Direct contact", "direct.note": "Prefer email? Reach us directly.", "mailto.subject": "European growth enquiry", "form.hint": "Your message goes straight to our team — we typically reply within two business days.", "direct.placeholder": "Placeholder — swap in real contact details before launch."}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "title": "Contacto", "intro": "Cuéntanos sobre tu negocio y hacia dónde te diriges en Europa. Te responderemos en un plazo de dos días laborables.", "f.name": "Nombre", "f.company": "Empresa", "f.email": "Email de trabajo", "f.segment": "¿Cuál se parece más a ti?", "f.segment.opt0": "First Flag", "f.segment.opt1": "Stalled Bridgehead", "f.segment.opt2": "Board-Pressure Sprint", "f.segment.opt3": "Aún no lo sé", "f.message": "Mensaje", "f.submit": "Enviar mensaje", "f.sending": "Enviando…", "f.sent": "Gracias — hemos recibido tu mensaje y te contactaremos en un plazo de dos días laborables.", "f.error": "Algo ha fallado al enviarlo — inténtalo de nuevo o escríbenos directamente a hello@projectemea.eu.", "direct.title": "Contacto directo", "direct.note": "¿Prefieres el correo? Escríbenos directamente.", "mailto.subject": "Consulta sobre crecimiento europeo", "form.hint": "Tu mensaje llega directamente a nuestro equipo — normalmente respondemos en un plazo de dos días laborables.", "direct.placeholder": "Marcador de posición — sustituir por datos de contacto reales antes del lanzamiento."}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Contact", "intro": "Parlez-nous de votre entreprise et de vos ambitions en Europe. Nous vous répondrons dans un délai de deux jours ouvrés.", "f.name": "Nom", "f.company": "Entreprise", "f.email": "E-mail professionnel", "f.segment": "Lequel vous ressemble ?", "f.segment.opt0": "First Flag", "f.segment.opt1": "Stalled Bridgehead", "f.segment.opt2": "Board-Pressure Sprint", "f.segment.opt3": "Pas encore sûr", "f.message": "Message", "f.submit": "Envoyer le message", "f.sending": "Envoi en cours…", "f.sent": "Merci — nous avons bien reçu votre message et nous vous recontacterons dans un délai de deux jours ouvrés.", "f.error": "Une erreur s'est produite lors de l'envoi — veuillez réessayer, ou écrivez-nous directement à hello@projectemea.eu.", "direct.title": "Contact direct", "direct.note": "Vous préférez l'e-mail ? Écrivez-nous directement.", "mailto.subject": "Demande — croissance en Europe", "form.hint": "Votre message arrive directement à notre équipe — nous répondons généralement dans un délai de deux jours ouvrés.", "direct.placeholder": "Espace réservé — à remplacer par de vraies coordonnées avant le lancement."}};
-  var LANGS = ['en','es','fr'];
-  function getLang(){
-    try{
-      var q = new URLSearchParams(location.search).get('lang');
-      if (LANGS.indexOf(q) !== -1) return q;
-    }catch(e){}
-    try{
-      var stored = localStorage.getItem('pe_lang');
-      if (LANGS.indexOf(stored) !== -1) return stored;
-    }catch(e){}
-    return 'en';
-  }
-  function applyLang(lang){
-    if (LANGS.indexOf(lang) === -1) lang = 'en';
-    document.documentElement.setAttribute('lang', lang);
-    var dict = I18N[lang] || I18N.en;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-      else if (I18N.en[key] !== undefined) el.innerHTML = I18N.en[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-ph');
-      var val = dict[key] !== undefined ? dict[key] : I18N.en[key];
-      if (val !== undefined) el.setAttribute('placeholder', val);
-    });
-    document.querySelectorAll('a[data-internal]').forEach(function(a){
-      try{
-        var base = a.getAttribute('data-href') || a.getAttribute('href');
-        if (!a.getAttribute('data-href')) a.setAttribute('data-href', base);
-        var url = new URL(base, location.href);
-        url.searchParams.set('lang', lang);
-        a.setAttribute('href', url.toString());
-      }catch(e){}
-    });
-    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
-    });
-    try{ localStorage.setItem('pe_lang', lang); }catch(e){}
-  }
-  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang-btn')); });
-  });
   var menuBtn = document.querySelector('.menu-toggle');
   var navLinks = document.querySelector('nav.links');
   if (menuBtn && navLinks){
     menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
   }
-  window.PE_I18N = I18N;
-  applyLang(getLang());
-  window.__PE_APPLY_LANG__ = applyLang;
 
   // --- Scroll-reveal for below-the-fold content ---
   (function(){
@@ -451,13 +391,6 @@
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbyPQsfXMPKMgadO6ZG64N3c_coeMl7KwbatG1kbvfg7FUDUk91CXvsl-mTWd5mo-084/exec';
   var btn = f.querySelector('button[type="submit"]');
   var note = f.querySelector('.form-note');
-  var btnDefaultKey = 'f.submit';
-
-  function t(key, fallback){
-    var lang = document.documentElement.getAttribute('lang') || 'en';
-    var dict = (window.PE_I18N && window.PE_I18N[lang]) || {};
-    return dict[key] || fallback;
-  }
 
   f.addEventListener('submit', function(e){
     e.preventDefault();
@@ -467,8 +400,8 @@
     var segment = document.getElementById('f-segment').value;
     var message = document.getElementById('f-message').value;
 
-    if (btn) { btn.disabled = true; btn.textContent = t('f.sending', 'Sending…'); }
-    if (note) { note.textContent = t('form.hint', ''); note.classList.add('show'); }
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    if (note) { note.textContent = 'Your message goes straight to our team — we typically reply within two business days.'; note.classList.add('show'); }
 
     var body = new URLSearchParams({
       name: name, company: company, email: email, segment: segment, message: message
@@ -476,13 +409,13 @@
 
     fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: body })
       .then(function(){
-        if (note) { note.textContent = t('f.sent', "Thanks — we've got your message and will be in touch within two business days."); }
+        if (note) { note.textContent = "Thanks — we've got your message and will be in touch within two business days."; }
         f.reset();
-        if (btn) { btn.disabled = false; btn.textContent = t(btnDefaultKey, 'Send message'); }
+        if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
       })
       .catch(function(){
-        if (note) { note.textContent = t('f.error', 'Something went wrong sending that — please try again, or email us directly at hello@projectemea.eu.'); }
-        if (btn) { btn.disabled = false; btn.textContent = t(btnDefaultKey, 'Send message'); }
+        if (note) { note.textContent = 'Something went wrong sending that — please try again, or email us directly at hello@projectemea.eu.'; }
+        if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
       });
   });
 })();

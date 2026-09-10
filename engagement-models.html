@@ -48,11 +48,6 @@
   nav.links a.active{color:var(--gold);font-weight:600;}
   nav.links a.active::after{transform:scaleX(1);}
   .nav-right{display:flex;align-items:center;gap:16px;}
-  .lang-switch{display:flex;gap:4px;font-family:var(--font-mono);font-size:.72rem;}
-  .lang-switch button{background:none;border:1px solid var(--line);border-radius:5px;color:var(--ink-soft);
-    padding:4px 7px;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
-  .lang-switch button:hover{color:var(--ink);}
-  .lang-switch button.active{border-color:var(--gold);color:var(--gold);}
   .nav-cta{background:var(--gold);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
     font-size:.85rem;font-family:var(--font-body);font-weight:600;cursor:pointer;text-decoration:none;
     display:inline-block;white-space:nowrap;transition:background .15s,transform .15s;}
@@ -71,9 +66,6 @@
     .nav-cta{display:none;}
     .brand{font-size:.72rem;gap:7px;}
     .brand svg{width:22px;height:22px;}
-  }
-  @media (max-width:380px){
-    .lang-switch{display:none;}
   }
 
   .hero{padding:clamp(48px,6vw,84px) 0 clamp(40px,5vw,64px);text-align:center;}
@@ -234,7 +226,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="index.html" data-internal>
+    <a class="brand" href="index.html">
       <svg viewBox="0 0 40 40" aria-hidden="true">
         <circle cx="20" cy="20" r="18" fill="none" stroke="#d5d9d1" stroke-width="1.2"/>
         <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#9c7a2e"/>
@@ -247,20 +239,15 @@
     </a>
     
     <nav class="links">
-      <a href="who-we-help.html" data-internal class="" data-i18n="nav.who">Who We Help</a>
-      <a href="how-we-work.html" data-internal class="" data-i18n="nav.how">How We Work</a>
-      <a href="engagement-models.html" data-internal class=" active" data-i18n="nav.engagement">Engagement Models</a>
-      <a href="contact.html" data-internal class="" data-i18n="nav.contact">Contact</a>
+      <a href="who-we-help.html" class="">Who We Help</a>
+      <a href="how-we-work.html" class="">How We Work</a>
+      <a href="engagement-models.html" class=" active">Engagement Models</a>
+      <a href="contact.html" class="">Contact</a>
     </nav>
     
     <div class="nav-right">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button data-lang-btn="en" type="button">EN</button>
-        <button data-lang-btn="es" type="button">ES</button>
-        <button data-lang-btn="fr" type="button">FR</button>
-      </div>
-      <button class="menu-toggle" type="button" data-i18n="menu.open">Menu</button>
-      <a class="nav-cta" href="contact.html" data-internal data-i18n="nav.cta">Talk to us</a>
+      <button class="menu-toggle" type="button">Menu</button>
+      <a class="nav-cta" href="contact.html">Talk to us</a>
     </div>
   </div>
 </header>
@@ -269,8 +256,8 @@
 
 <section class="page-header">
   <div class="wrap">
-    <h1 data-i18n="title">Engagement Models</h1>
-    <p data-i18n="sub">Start where it makes sense for you.</p>
+    <h1>Engagement Models</h1>
+    <p>Start where it makes sense for you.</p>
   </div>
 </section>
 <section class="tight">
@@ -278,139 +265,92 @@
     <div class="models-grid" data-reveal-group>
       
       <div class="card model-card" data-reveal>
-        <h3 data-i18n="m1.h">Fixed-Price Assessment</h3>
-        <p class="model-desc" data-i18n="m1.p">A scoped market and readiness assessment — the lowest-commitment way to start.</p>
-        <p class="model-best" data-i18n="m1.best">Best for teams still deciding whether Europe is worth the investment.</p>
-        <ul class="model-included"><li data-i18n="m1.inc1">A scoped assessment of 2–3 priority European markets.</li><li data-i18n="m1.inc2">Route-to-market and ICP validation grounded in your actual product.</li><li data-i18n="m1.inc3">A written go/no-go recommendation with a proposed next step.</li></ul>
+        <h3>Fixed-Price Assessment</h3>
+        <p class="model-desc">A scoped market and readiness assessment — the lowest-commitment way to start.</p>
+        <p class="model-best">Best for teams still deciding whether Europe is worth the investment.</p>
+        <ul class="model-included"><li>A scoped assessment of 2–3 priority European markets.</li><li>Route-to-market and ICP validation grounded in your actual product.</li><li>A written go/no-go recommendation with a proposed next step.</li></ul>
       </div>
       <div class="card model-card" data-reveal>
-        <h3 data-i18n="m2.h">Strategic Growth Retainer</h3>
-        <p class="model-desc" data-i18n="m2.p">Monthly, embedded execution across the Growth Framework.</p>
-        <p class="model-best" data-i18n="m2.best">Best for teams ready to commit to sustained European execution.</p>
-        <ul class="model-included"><li data-i18n="m2.inc1">Embedded, monthly execution across the full Growth Framework.</li><li data-i18n="m2.inc2">A dedicated point of contact who runs point on your behalf.</li><li data-i18n="m2.inc3">Monthly reporting against pipeline, logos and momentum.</li></ul>
+        <h3>Strategic Growth Retainer</h3>
+        <p class="model-desc">Monthly, embedded execution across the Growth Framework.</p>
+        <p class="model-best">Best for teams ready to commit to sustained European execution.</p>
+        <ul class="model-included"><li>Embedded, monthly execution across the full Growth Framework.</li><li>A dedicated point of contact who runs point on your behalf.</li><li>Monthly reporting against pipeline, logos and momentum.</li></ul>
       </div>
       <div class="card model-card" data-reveal>
-        <h3 data-i18n="m3.h">Success-Based Incentives</h3>
-        <p class="model-desc" data-i18n="m3.p">Commercial terms tied to the traction actually delivered.</p>
-        <p class="model-best" data-i18n="m3.best">Best for teams that want European growth de-risked commercially.</p>
-        <ul class="model-included"><li data-i18n="m3.inc1">Commercial terms tied to qualified pipeline or closed revenue.</li><li data-i18n="m3.inc2">Aligned incentives — we only win when your European growth does.</li><li data-i18n="m3.inc3">Typically layered on top of a Retainer or Fractional Leadership model.</li></ul>
+        <h3>Success-Based Incentives</h3>
+        <p class="model-desc">Commercial terms tied to the traction actually delivered.</p>
+        <p class="model-best">Best for teams that want European growth de-risked commercially.</p>
+        <ul class="model-included"><li>Commercial terms tied to qualified pipeline or closed revenue.</li><li>Aligned incentives — we only win when your European growth does.</li><li>Typically layered on top of a Retainer or Fractional Leadership model.</li></ul>
       </div>
       <div class="card model-card" data-reveal>
-        <h3 data-i18n="m4.h">Fractional Leadership</h3>
-        <p class="model-desc" data-i18n="m4.p">An outsourced European commercial lead, part- or full-time.</p>
-        <p class="model-best" data-i18n="m4.best">Best for teams that need a European commercial leader, not just execution.</p>
-        <ul class="model-included"><li data-i18n="m4.inc1">An outsourced VP/Head of EMEA, part- or full-time.</li><li data-i18n="m4.inc2">Represents you in market — partners, customers, hires.</li><li data-i18n="m4.inc3">A built-in path to a permanent hire when the time is right.</li></ul>
+        <h3>Fractional Leadership</h3>
+        <p class="model-desc">An outsourced European commercial lead, part- or full-time.</p>
+        <p class="model-best">Best for teams that need a European commercial leader, not just execution.</p>
+        <ul class="model-included"><li>An outsourced VP/Head of EMEA, part- or full-time.</li><li>Represents you in market — partners, customers, hires.</li><li>A built-in path to a permanent hire when the time is right.</li></ul>
       </div>
     </div>
     
       <div class="card model-card addon-card" data-reveal>
-        <h3 data-i18n="addon.h">Marketing &amp; Demand-Generation</h3>
-        <p class="model-desc" data-i18n="addon">Optional add-on — available across all four models above.</p>
-        <p class="model-best" data-i18n="addon.best">Best for teams whose growth story needs a stronger pipeline engine, not just sales execution.</p>
-        <ul class="model-included"><li data-i18n="addon.inc1">Fractional GTM/marketing leadership across positioning, messaging and channel strategy.</li><li data-i18n="addon.inc2">Hands-on demand-generation execution — campaigns, content, and channel testing.</li><li data-i18n="addon.inc3">Layered onto any of the four models above — never sold as a standalone engagement.</li></ul>
+        <h3>Marketing &amp; Demand-Generation</h3>
+        <p class="model-desc">Optional add-on — available across all four models above.</p>
+        <p class="model-best">Best for teams whose growth story needs a stronger pipeline engine, not just sales execution.</p>
+        <ul class="model-included"><li>Fractional GTM/marketing leadership across positioning, messaging and channel strategy.</li><li>Hands-on demand-generation execution — campaigns, content, and channel testing.</li><li>Layered onto any of the four models above — never sold as a standalone engagement.</li></ul>
       </div>
   </div>
 </section>
 <section class="tight">
   <div class="wrap">
-    <h2 class="section-title" data-i18n="days.title">The First 90 Days</h2>
+    <h2 class="section-title">The First 90 Days</h2>
     <ul class="checklist">
-      <li><span class="mark">✓</span><span data-i18n="day1">Deep discovery into your business, product and value proposition.</span></li>
-      <li><span class="mark">✓</span><span data-i18n="day2">Market and competitor assessment, ICP refinement.</span></li>
-      <li><span class="mark">✓</span><span data-i18n="day3">Commercial messaging and sales enablement.</span></li>
-      <li><span class="mark">✓</span><span data-i18n="day4">Executive introductions and first pipeline.</span></li>
+      <li><span class="mark">✓</span><span>Deep discovery into your business, product and value proposition.</span></li>
+      <li><span class="mark">✓</span><span>Market and competitor assessment, ICP refinement.</span></li>
+      <li><span class="mark">✓</span><span>Commercial messaging and sales enablement.</span></li>
+      <li><span class="mark">✓</span><span>Executive introductions and first pipeline.</span></li>
     </ul>
   </div>
 </section>
 <section class="tight">
   <div class="wrap">
-    <h2 class="section-title" data-i18n="faq.title">Common Questions</h2>
-    <p class="section-sub" data-i18n="faq.sub">The things most teams ask before their first conversation with us.</p>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-sub">The things most teams ask before their first conversation with us.</p>
     <div class="faq">
       <details class="faq-item" open>
-        <summary data-i18n="faq1.q">How quickly can we start?</summary>
-        <p data-i18n="faq1.a">Most engagements begin within two to three weeks of a signed agreement — faster for a Fixed-Price Assessment, since it has the smallest scope.</p>
+        <summary>How quickly can we start?</summary>
+        <p>Most engagements begin within two to three weeks of a signed agreement — faster for a Fixed-Price Assessment, since it has the smallest scope.</p>
       </details>
       <details class="faq-item">
-        <summary data-i18n="faq2.q">Do we need to relocate anyone to Europe?</summary>
-        <p data-i18n="faq2.a">No. We are your European commercial team — that is the entire point of the model. You stay focused on product and home-market growth.</p>
+        <summary>Do we need to relocate anyone to Europe?</summary>
+        <p>No. We are your European commercial team — that is the entire point of the model. You stay focused on product and home-market growth.</p>
       </details>
       <details class="faq-item">
-        <summary data-i18n="faq3.q">What happens after the Fixed-Price Assessment?</summary>
-        <p data-i18n="faq3.a">You get a clear go/no-go recommendation and a proposed next step — typically a Retainer or Fractional Leadership engagement. There's no obligation to continue.</p>
+        <summary>What happens after the Fixed-Price Assessment?</summary>
+        <p>You get a clear go/no-go recommendation and a proposed next step — typically a Retainer or Fractional Leadership engagement. There's no obligation to continue.</p>
       </details>
       <details class="faq-item">
-        <summary data-i18n="faq4.q">Can we combine models?</summary>
-        <p data-i18n="faq4.a">Yes — most long-term clients layer Success-Based Incentives or the Marketing &amp; Demand-Generation add-on on top of a Retainer or Fractional Leadership engagement.</p>
+        <summary>Can we combine models?</summary>
+        <p>Yes — most long-term clients layer Success-Based Incentives or the Marketing &amp; Demand-Generation add-on on top of a Retainer or Fractional Leadership engagement.</p>
       </details>
     </div>
   </div>
 </section>
 <div class="cta-band">
-  <p style="margin:0;"><a href="contact.html" data-internal data-i18n="cta" style="color:var(--gold);font-weight:600;text-decoration:none;font-family:var(--font-display);font-size:1.2rem;">Not sure which model fits? Let's talk it through →</a></p>
+  <p style="margin:0;"><a href="contact.html" style="color:var(--gold);font-weight:600;text-decoration:none;font-family:var(--font-display);font-size:1.2rem;">Not sure which model fits? Let's talk it through →</a></p>
 </div>
 
 </main>
 
 <footer>
-  <div class="wrap"><p data-i18n="footer.text">Project EMEA · ProjectEMEA.eu · English · Español · Français</p></div>
+  <div class="wrap"><p>Project EMEA · ProjectEMEA.eu</p></div>
 </footer>
 
 <script>
 
 (function(){
-  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Engagement Models", "sub": "Start where it makes sense for you.", "m1.h": "Fixed-Price Assessment", "m1.p": "A scoped market and readiness assessment — the lowest-commitment way to start.", "m1.best": "Best for teams still deciding whether Europe is worth the investment.", "m1.inc1": "A scoped assessment of 2–3 priority European markets.", "m1.inc2": "Route-to-market and ICP validation grounded in your actual product.", "m1.inc3": "A written go/no-go recommendation with a proposed next step.", "m2.h": "Strategic Growth Retainer", "m2.p": "Monthly, embedded execution across the Growth Framework.", "m2.best": "Best for teams ready to commit to sustained European execution.", "m2.inc1": "Embedded, monthly execution across the full Growth Framework.", "m2.inc2": "A dedicated point of contact who runs point on your behalf.", "m2.inc3": "Monthly reporting against pipeline, logos and momentum.", "m3.h": "Success-Based Incentives", "m3.p": "Commercial terms tied to the traction actually delivered.", "m3.best": "Best for teams that want European growth de-risked commercially.", "m3.inc1": "Commercial terms tied to qualified pipeline or closed revenue.", "m3.inc2": "Aligned incentives — we only win when your European growth does.", "m3.inc3": "Typically layered on top of a Retainer or Fractional Leadership model.", "m4.h": "Fractional Leadership", "m4.p": "An outsourced European commercial lead, part- or full-time.", "m4.best": "Best for teams that need a European commercial leader, not just execution.", "m4.inc1": "An outsourced VP/Head of EMEA, part- or full-time.", "m4.inc2": "Represents you in market — partners, customers, hires.", "m4.inc3": "A built-in path to a permanent hire when the time is right.", "addon": "Optional add-on — Marketing &amp; Demand-Generation: fractional GTM/marketing leadership and hands-on demand-gen execution, available across all four models above.", "addon.h": "Marketing &amp; Demand-Generation", "addon.best": "Best for teams whose growth story needs a stronger pipeline engine, not just sales execution.", "addon.inc1": "Fractional GTM/marketing leadership across positioning, messaging and channel strategy.", "addon.inc2": "Hands-on demand-generation execution — campaigns, content, and channel testing.", "addon.inc3": "Layered onto any of the four models above — never sold as a standalone engagement.", "faq.title": "Common Questions", "faq.sub": "The things most teams ask before their first conversation with us.", "faq1.q": "How quickly can we start?", "faq1.a": "Most engagements begin within two to three weeks of a signed agreement — faster for a Fixed-Price Assessment, since it has the smallest scope.", "faq2.q": "Do we need to relocate anyone to Europe?", "faq2.a": "No. We are your European commercial team — that is the entire point of the model. You stay focused on product and home-market growth.", "faq3.q": "What happens after the Fixed-Price Assessment?", "faq3.a": "You get a clear go/no-go recommendation and a proposed next step — typically a Retainer or Fractional Leadership engagement. There's no obligation to continue.", "faq4.q": "Can we combine models?", "faq4.a": "Yes — most long-term clients layer Success-Based Incentives or the Marketing &amp; Demand-Generation add-on on top of a Retainer or Fractional Leadership engagement.", "days.title": "The First 90 Days", "day1": "Deep discovery into your business, product and value proposition.", "day2": "Market and competitor assessment, ICP refinement.", "day3": "Commercial messaging and sales enablement.", "day4": "Executive introductions and first pipeline.", "cta": "Not sure which model fits? Let's talk it through →"}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "title": "Modelos de colaboración", "sub": "Empieza donde tenga sentido para ti.", "m1.h": "Evaluación a precio fijo", "m1.p": "Una evaluación acotada de mercado y de preparación — la forma de empezar con menos compromiso.", "m1.best": "Ideal para equipos que aún están decidiendo si Europa merece la inversión.", "m1.inc1": "Una evaluación acotada de 2 a 3 mercados europeos prioritarios.", "m1.inc2": "Validación de ruta de entrada e ICP basada en tu producto real.", "m1.inc3": "Una recomendación por escrito de seguir o no, con el siguiente paso propuesto.", "m2.h": "Retenedor estratégico de crecimiento", "m2.p": "Ejecución mensual e integrada a lo largo del Growth Framework.", "m2.best": "Ideal para equipos listos para comprometerse con una ejecución europea sostenida.", "m2.inc1": "Ejecución mensual e integrada a lo largo de todo el Growth Framework.", "m2.inc2": "Un punto de contacto dedicado que actúa en tu nombre.", "m2.inc3": "Informes mensuales sobre pipeline, logos e impulso.", "m3.h": "Incentivos por resultados", "m3.p": "Condiciones comerciales ligadas a la tracción realmente entregada.", "m3.best": "Ideal para equipos que quieren reducir el riesgo comercial del crecimiento europeo.", "m3.inc1": "Condiciones comerciales ligadas a pipeline cualificado o ingresos cerrados.", "m3.inc2": "Incentivos alineados — solo ganamos si tu crecimiento europeo también gana.", "m3.inc3": "Normalmente se combina con un Retenedor o Liderazgo Fraccional.", "m4.h": "Liderazgo fraccional", "m4.p": "Un responsable comercial europeo externalizado, a tiempo parcial o completo.", "m4.best": "Ideal para equipos que necesitan un líder comercial europeo, no solo ejecución.", "m4.inc1": "Un VP/Head of EMEA externalizado, a tiempo parcial o completo.", "m4.inc2": "Te representa en el mercado — socios, clientes, contrataciones.", "m4.inc3": "Un camino integrado hacia una contratación permanente cuando llegue el momento.", "addon": "Add-on opcional — Marketing y Generación de Demanda: liderazgo fraccional de GTM/marketing y ejecución práctica de demand-gen, disponible en los cuatro modelos anteriores.", "addon.h": "Marketing y Generación de Demanda", "addon.best": "Ideal para equipos cuya historia de crecimiento necesita un motor de pipeline más fuerte, no solo ejecución de ventas.", "addon.inc1": "Liderazgo fraccional de GTM/marketing en posicionamiento, mensajería y estrategia de canales.", "addon.inc2": "Ejecución práctica de generación de demanda — campañas, contenido y pruebas de canal.", "addon.inc3": "Se añade a cualquiera de los cuatro modelos anteriores — nunca se vende como proyecto independiente.", "faq.title": "Preguntas frecuentes", "faq.sub": "Lo que la mayoría de los equipos preguntan antes de su primera conversación con nosotros.", "faq1.q": "¿Con qué rapidez podemos empezar?", "faq1.a": "La mayoría de los proyectos comienzan entre dos y tres semanas después de firmar el acuerdo — más rápido en el caso de una Evaluación a Precio Fijo, por su alcance más reducido.", "faq2.q": "¿Necesitamos trasladar a alguien a Europa?", "faq2.a": "No. Nosotros somos tu equipo comercial europeo — ese es precisamente el objetivo del modelo. Tú te concentras en el producto y en el crecimiento de tu mercado local.", "faq3.q": "¿Qué pasa después de la Evaluación a Precio Fijo?", "faq3.a": "Recibes una recomendación clara de seguir o no, junto con el siguiente paso propuesto — normalmente un Retenedor o un Liderazgo Fraccional. No hay obligación de continuar.", "faq4.q": "¿Podemos combinar modelos?", "faq4.a": "Sí — la mayoría de los clientes a largo plazo combinan Incentivos por Resultados o el add-on de Marketing y Generación de Demanda con un Retenedor o un Liderazgo Fraccional.", "days.title": "Los primeros 90 días", "day1": "Descubrimiento en profundidad de tu negocio, tu producto y tu propuesta de valor.", "day2": "Evaluación de mercado y competencia, y refinamiento del ICP.", "day3": "Mensajería comercial y habilitación de ventas.", "day4": "Presentaciones a directivos y primer pipeline.", "cta": "¿No sabes qué modelo se ajusta mejor? Hablémoslo →"}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Modèles de collaboration", "sub": "Commencez là où cela a du sens pour vous.", "m1.h": "Évaluation à prix fixe", "m1.p": "Une évaluation cadrée du marché et de votre degré de préparation — la façon de démarrer avec le moins d'engagement.", "m1.best": "Idéal pour les équipes qui hésitent encore à investir en Europe.", "m1.inc1": "Une évaluation cadrée de 2 à 3 marchés européens prioritaires.", "m1.inc2": "Validation de la voie d'accès et de l'ICP fondée sur votre produit réel.", "m1.inc3": "Une recommandation écrite de poursuivre ou non, avec la prochaine étape proposée.", "m2.h": "Mission stratégique de croissance", "m2.p": "Exécution mensuelle et intégrée sur l'ensemble du Growth Framework.", "m2.best": "Idéal pour les équipes prêtes à s'engager dans une exécution européenne durable.", "m2.inc1": "Exécution mensuelle et intégrée sur l'ensemble du Growth Framework.", "m2.inc2": "Un point de contact dédié qui agit en votre nom.", "m2.inc3": "Rapports mensuels sur le pipeline, les références et la dynamique.", "m3.h": "Incitations liées aux résultats", "m3.p": "Conditions commerciales liées à la traction réellement obtenue.", "m3.best": "Idéal pour les équipes qui veulent réduire le risque commercial de leur croissance européenne.", "m3.inc1": "Conditions commerciales liées au pipeline qualifié ou au chiffre d'affaires signé.", "m3.inc2": "Incitations alignées — nous ne gagnons que si votre croissance européenne gagne aussi.", "m3.inc3": "Généralement combiné avec une Mission ou une Direction à Temps Partagé.", "m4.h": "Direction commerciale à temps partagé", "m4.p": "Un responsable commercial européen externalisé, à temps partiel ou complet.", "m4.best": "Idéal pour les équipes qui ont besoin d'un dirigeant commercial européen, pas seulement d'exécution.", "m4.inc1": "Un VP/Head of EMEA externalisé, à temps partiel ou complet.", "m4.inc2": "Vous représente sur le marché — partenaires, clients, recrutements.", "m4.inc3": "Une trajectoire intégrée vers un recrutement permanent lorsque le moment est venu.", "addon": "Option — Marketing et génération de demande : direction fractionnée GTM/marketing et exécution opérationnelle de demand-gen, disponible sur les quatre modèles ci-dessus.", "addon.h": "Marketing et génération de demande", "addon.best": "Idéal pour les équipes dont l'histoire de croissance a besoin d'un moteur de pipeline plus solide, pas seulement d'exécution commerciale.", "addon.inc1": "Direction fractionnée GTM/marketing sur le positionnement, les messages et la stratégie de canaux.", "addon.inc2": "Exécution opérationnelle de la génération de demande — campagnes, contenu et tests de canaux.", "addon.inc3": "S'ajoute à l'un des quatre modèles ci-dessus — jamais vendu comme mission autonome.", "faq.title": "Questions fréquentes", "faq.sub": "Ce que la plupart des équipes demandent avant leur premier échange avec nous.", "faq1.q": "À quelle vitesse pouvons-nous démarrer ?", "faq1.a": "La plupart des missions démarrent dans les deux à trois semaines suivant la signature — plus rapidement pour une Évaluation à Prix Fixe, dont le périmètre est le plus réduit.", "faq2.q": "Devons-nous relocaliser quelqu'un en Europe ?", "faq2.a": "Non. Nous sommes votre équipe commerciale européenne — c'est tout l'objet du modèle. Vous restez concentrés sur le produit et la croissance de votre marché domestique.", "faq3.q": "Que se passe-t-il après l'Évaluation à Prix Fixe ?", "faq3.a": "Vous recevez une recommandation claire de poursuivre ou non, avec la prochaine étape proposée — généralement une Mission ou une Direction à Temps Partagé. Aucune obligation de continuer.", "faq4.q": "Pouvons-nous combiner les modèles ?", "faq4.a": "Oui — la plupart des clients de long terme combinent les Incitations liées aux résultats ou l'option Marketing et génération de demande avec une Mission ou une Direction à Temps Partagé.", "days.title": "Les 90 premiers jours", "day1": "Découverte approfondie de votre activité, votre produit et votre proposition de valeur.", "day2": "Évaluation du marché et de la concurrence, affinement de l'ICP.", "day3": "Messages commerciaux et outillage des ventes.", "day4": "Introductions auprès de décideurs et premier pipeline.", "cta": "Vous ne savez pas quel modèle vous correspond ? Parlons-en →"}};
-  var LANGS = ['en','es','fr'];
-  function getLang(){
-    try{
-      var q = new URLSearchParams(location.search).get('lang');
-      if (LANGS.indexOf(q) !== -1) return q;
-    }catch(e){}
-    try{
-      var stored = localStorage.getItem('pe_lang');
-      if (LANGS.indexOf(stored) !== -1) return stored;
-    }catch(e){}
-    return 'en';
-  }
-  function applyLang(lang){
-    if (LANGS.indexOf(lang) === -1) lang = 'en';
-    document.documentElement.setAttribute('lang', lang);
-    var dict = I18N[lang] || I18N.en;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) el.innerHTML = dict[key];
-      else if (I18N.en[key] !== undefined) el.innerHTML = I18N.en[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-ph');
-      var val = dict[key] !== undefined ? dict[key] : I18N.en[key];
-      if (val !== undefined) el.setAttribute('placeholder', val);
-    });
-    document.querySelectorAll('a[data-internal]').forEach(function(a){
-      try{
-        var base = a.getAttribute('data-href') || a.getAttribute('href');
-        if (!a.getAttribute('data-href')) a.setAttribute('data-href', base);
-        var url = new URL(base, location.href);
-        url.searchParams.set('lang', lang);
-        a.setAttribute('href', url.toString());
-      }catch(e){}
-    });
-    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
-    });
-    try{ localStorage.setItem('pe_lang', lang); }catch(e){}
-  }
-  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang-btn')); });
-  });
   var menuBtn = document.querySelector('.menu-toggle');
   var navLinks = document.querySelector('nav.links');
   if (menuBtn && navLinks){
     menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
   }
-  window.PE_I18N = I18N;
-  applyLang(getLang());
-  window.__PE_APPLY_LANG__ = applyLang;
 
   // --- Scroll-reveal for below-the-fold content ---
   (function(){
