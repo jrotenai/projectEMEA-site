@@ -1,0 +1,340 @@
+<title>Project EMEA: Who We Help</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#eef1ec; --paper-raised:#e2e7e0; --ink:#1c2a27; --ink-soft:#56655f;
+    --line:#c3cdc5; --route:#a8492b; --harbor:#3f6a55; --brass:#7a5a26;
+    --font-display:"Source Serif 4",Georgia,serif;
+    --font-body:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#131c1a; --paper-raised:#1b2521; --ink:#e9ede9; --ink-soft:#9fb0a8;
+      --line:#2e3b36; --route:#e08a5f; --harbor:#7fc3a0; --brass:#d3ac66;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#131c1a; --paper-raised:#1b2521; --ink:#e9ede9; --ink-soft:#9fb0a8;
+    --line:#2e3b36; --route:#e08a5f; --harbor:#7fc3a0; --brass:#d3ac66;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);}
+  .wrap{max-width:980px;margin-inline:auto;padding:0 20px;}
+  a{color:inherit;}
+
+  header{border-bottom:1px solid var(--line);position:relative;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-weight:600;
+    letter-spacing:.03em;text-transform:uppercase;font-size:.85rem;text-decoration:none;color:var(--ink);
+    white-space:nowrap;}
+  .brand svg{width:26px;height:26px;flex:none;}
+  nav.links{display:flex;gap:26px;font-size:.88rem;align-items:center;}
+  nav.links a{text-decoration:none;}
+  nav.links a:hover{color:var(--route);}
+  nav.links a.active{color:var(--route);font-weight:600;}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .lang-switch{display:flex;gap:4px;font-family:var(--font-mono);font-size:.72rem;}
+  .lang-switch button{background:none;border:1px solid var(--line);border-radius:5px;color:var(--ink-soft);
+    padding:4px 7px;cursor:pointer;font-family:inherit;}
+  .lang-switch button.active{border-color:var(--route);color:var(--route);}
+  .nav-cta{background:var(--route);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
+    font-size:.85rem;font-family:var(--font-body);cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink);
+    font-family:var(--font-mono);font-size:.75rem;padding:7px 10px;cursor:pointer;}
+  @media (max-width:560px){
+    nav.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);
+      border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:6px 20px 14px;z-index:5;}
+    nav.links.open{display:flex;}
+    nav.links a{padding:8px 0;width:100%;}
+    .menu-toggle{display:inline-block;}
+  }
+
+  .hero{padding:56px 0 48px;text-align:center;}
+  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--brass);margin:0 0 14px;}
+  h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,1.3rem + 3vw,3.1rem);
+    line-height:1.12;margin:0 0 18px;text-wrap:balance;}
+  .hero p{font-size:1.08rem;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 auto 28px;}
+  .btn-primary{display:inline-block;background:var(--route);color:var(--paper);text-decoration:none;
+    border-radius:8px;padding:13px 24px;font-size:.95rem;font-weight:600;border:none;cursor:pointer;font-family:var(--font-body);}
+  .btn-primary:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--route);outline-offset:2px;}
+
+  .strip{background:var(--paper-raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;}
+  .strip p{max-width:66ch;margin:0 auto;text-align:center;font-size:1rem;line-height:1.6;}
+
+  section{padding:56px 0;}
+  section.tight{padding:40px 0;}
+  h2.section-title{font-family:var(--font-display);font-weight:600;font-size:1.5rem;text-align:center;margin:0 0 8px;}
+  .section-sub{text-align:center;color:var(--ink-soft);font-size:.92rem;margin:0 0 32px;}
+  .page-header{padding:48px 0 8px;text-align:center;}
+  .page-header h1{font-size:clamp(1.7rem,1.3rem + 2vw,2.4rem);}
+  .page-header p{color:var(--ink-soft);font-size:1rem;max-width:60ch;margin:0 auto;}
+
+  .segments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:560px){ .segments{grid-template-columns:1fr;} }
+  .card{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:22px;transition:border-color .15s;}
+  .card:hover{border-color:var(--route);}
+  .card .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--brass);margin:0 0 8px;}
+  .card h3{font-family:var(--font-display);font-size:1.15rem;margin:0 0 10px;}
+  .card p{font-size:.92rem;color:var(--ink-soft);line-height:1.55;margin:0 0 14px;}
+  .card a.card-link{color:var(--route);font-size:.86rem;text-decoration:none;font-weight:600;}
+
+  .framework{display:flex;justify-content:space-between;gap:10px;position:relative;}
+  .framework::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:2px;background:var(--line);}
+  @media (max-width:560px){ .framework{flex-wrap:wrap;row-gap:22px;} .framework::before{display:none;} }
+  .step{position:relative;z-index:1;flex:1;text-align:center;min-width:96px;}
+  .step .dot{width:48px;height:48px;border-radius:50%;background:var(--paper);border:2px solid var(--harbor);
+    color:var(--harbor);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);
+    font-weight:600;margin:0 auto 10px;}
+  .step h4{font-size:.92rem;margin:0 0 4px;}
+  .step p{font-size:.78rem;color:var(--ink-soft);margin:0;line-height:1.4;}
+
+  .proof{background:var(--ink);color:var(--paper);border-radius:14px;padding:36px 28px;text-align:center;}
+  .proof p{max-width:62ch;margin:0 auto;font-size:1rem;line-height:1.65;color:var(--paper);opacity:.92;}
+  .proof strong{color:var(--paper);opacity:1;}
+
+  .models{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:.85rem;font-family:var(--font-mono);}
+  .pill.addon{border-color:var(--harbor);color:var(--harbor);}
+
+  .cta-band{background:var(--paper-raised);border-top:1px solid var(--line);text-align:center;padding:52px 20px;}
+  .cta-band h2{font-family:var(--font-display);font-size:1.6rem;margin:0 0 20px;font-weight:600;}
+
+  footer{padding:28px 0;text-align:center;font-size:.8rem;color:var(--ink-soft);}
+
+  /* Who We Help — full segment sections */
+  .segment-full{border-top:1px solid var(--line);padding:44px 0;display:grid;grid-template-columns:220px 1fr;gap:36px;}
+  .segment-full:first-of-type{border-top:none;}
+  @media (max-width:560px){ .segment-full{grid-template-columns:1fr;gap:16px;} }
+  .segment-full .tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--brass);margin:0 0 8px;}
+  .segment-full h3{font-family:var(--font-display);font-size:1.3rem;margin:0;line-height:1.3;}
+  .segment-full .sub{color:var(--ink-soft);font-size:.9rem;margin-top:8px;line-height:1.5;}
+  .segment-body dt{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--harbor);margin:18px 0 6px;}
+  .segment-body dt:first-child{margin-top:0;}
+  .segment-body dd{margin:0;font-size:.98rem;line-height:1.6;color:var(--ink);}
+  .segment-full .card-link{display:inline-block;margin-top:18px;color:var(--route);font-weight:600;text-decoration:none;font-size:.92rem;}
+
+  .guardrails{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;padding:18px 22px;
+    text-align:center;margin-top:8px;}
+  .guardrails p{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--ink-soft);margin:0;line-height:1.7;}
+
+  /* How We Work — pillar grid */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:800px){ .pillars{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .pillars{grid-template-columns:1fr;} }
+  .pillar h3{font-family:var(--font-display);font-size:1.05rem;margin:0 0 8px;}
+  .pillar p{font-size:.9rem;color:var(--ink-soft);line-height:1.5;margin:0;}
+
+  .pull-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,1rem + 1vw,1.6rem);
+    text-align:center;max-width:52ch;margin:0 auto;line-height:1.4;color:var(--ink);text-wrap:balance;}
+  .pull-quote::before, .pull-quote::after{color:var(--route);}
+
+  /* Engagement Models */
+  .models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media (max-width:560px){ .models-grid{grid-template-columns:1fr;} }
+  .model-card h3{font-family:var(--font-display);font-size:1.1rem;margin:0 0 10px;color:var(--route);}
+  .model-card p{font-size:.92rem;color:var(--ink-soft);line-height:1.55;margin:0;}
+  .addon-card{border-color:var(--harbor);}
+  .addon-card p{color:var(--ink);}
+  .addon-card .tag{color:var(--harbor);}
+
+  .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:60ch;margin-inline:auto;}
+  .checklist li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;line-height:1.55;}
+  .checklist .mark{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--harbor);color:var(--harbor);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;margin-top:1px;}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+  @media (max-width:560px){ .contact-grid{grid-template-columns:1fr;gap:28px;} }
+  form.contact-form{display:flex;flex-direction:column;gap:14px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);}
+  .field input, .field select, .field textarea{
+    font-family:var(--font-body);font-size:.96rem;padding:11px 12px;border:1px solid var(--line);
+    border-radius:8px;background:var(--paper-raised);color:var(--ink);}
+  .field textarea{min-height:110px;resize:vertical;}
+  .direct-contact{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:24px;}
+  .direct-contact h3{font-family:var(--font-display);font-size:1.05rem;margin:0 0 10px;}
+  .direct-contact p{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
+  .direct-contact .value{color:var(--ink);font-weight:600;}
+  .form-note{font-size:.85rem;color:var(--harbor);margin-top:4px;display:none;}
+  .form-note.show{display:block;}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" data-internal>
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#c3cdc5" stroke-width="1.2"/>
+        <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#a8492b"/>
+        <path d="M20 36 L17 22 L20 20 L23 22 Z" fill="#56655f"/>
+        <path d="M4 20 L18 17 L20 20 L18 23 Z" fill="#56655f"/>
+        <path d="M36 20 L22 23 L20 20 L22 17 Z" fill="#56655f"/>
+        <circle cx="20" cy="20" r="2" fill="#7a5a26"/>
+      </svg>
+      Project EMEA
+    </a>
+    
+    <nav class="links">
+      <a href="who-we-help.html" data-internal class=" active" data-i18n="nav.who">Who We Help</a>
+      <a href="how-we-work.html" data-internal class="" data-i18n="nav.how">How We Work</a>
+      <a href="engagement-models.html" data-internal class="" data-i18n="nav.engagement">Engagement Models</a>
+      <a href="contact.html" data-internal class="" data-i18n="nav.contact">Contact</a>
+    </nav>
+    
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang-btn="en" type="button">EN</button>
+        <button data-lang-btn="es" type="button">ES</button>
+        <button data-lang-btn="fr" type="button">FR</button>
+      </div>
+      <button class="menu-toggle" type="button" data-i18n="menu.open">Menu</button>
+      <a class="nav-cta" href="contact.html" data-internal data-i18n="nav.cta">Talk to us</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="page-header">
+  <div class="wrap">
+    <h1 data-i18n="nav.who">Who We Help</h1>
+    <p data-i18n="intro">Three kinds of company bring us in. See which one sounds like you.</p>
+  </div>
+</section>
+<section class="tight">
+  <div class="wrap">
+    
+    <div class="segment-full">
+      <div>
+        <p class="tag" data-i18n="s1.tag">First Flag</p>
+        <h3 data-i18n="s1.sub">First-time entrants — no EMEA presence yet, still deciding whether to commit.</h3>
+      </div>
+      <div class="segment-body">
+        <dl>
+          <dt data-i18n="s1.situation.label">The situation</dt>
+          <dd data-i18n="s1.situation">You know Europe is a growth opportunity but can't justify hiring a VP of EMEA or opening an office before validating a single market.</dd>
+          <dt data-i18n="s1.getlabel">What you get</dt>
+          <dd data-i18n="s1.get">Validate two or three European markets and start generating pipeline before committing to permanent headcount or infrastructure.</dd>
+          <dt data-i18n="s1.whylabel">Why it works</dt>
+          <dd data-i18n="s1.why">The Understand → Launch phases are built exactly for this: market and route-to-market validation before commercial commitment.</dd>
+        </dl>
+        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+      </div>
+    </div>
+
+    <div class="segment-full">
+      <div>
+        <p class="tag" data-i18n="s2.tag">First Flag</p>
+        <h3 data-i18n="s2.sub">Already earning EU revenue, but growth has plateaued without local execution.</h3>
+      </div>
+      <div class="segment-body">
+        <dl>
+          <dt data-i18n="s1.situation.label">The situation</dt>
+          <dd data-i18n="s2.situation">Revenue proves demand exists, but with no one on the ground to run enterprise sales cycles or manage renewals, growth has stalled.</dd>
+          <dt data-i18n="s1.getlabel">What you get</dt>
+          <dd data-i18n="s2.get">Turn existing but unmanaged European revenue into a repeatable, growing book of business — without a permanent European team.</dd>
+          <dt data-i18n="s1.whylabel">Why it works</dt>
+          <dd data-i18n="s2.why">The Grow → Retain phases target this directly: qualified pipeline, enterprise deal progression, and account expansion.</dd>
+        </dl>
+        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+      </div>
+    </div>
+
+    <div class="segment-full">
+      <div>
+        <p class="tag" data-i18n="s3.tag">First Flag</p>
+        <h3 data-i18n="s3.sub">VC-backed, under investor pressure to show EMEA traction before the next raise.</h3>
+      </div>
+      <div class="segment-body">
+        <dl>
+          <dt data-i18n="s1.situation.label">The situation</dt>
+          <dd data-i18n="s3.situation">The board wants a European growth story for the next raise, but you can't afford to burn six figures on an office before knowing if it will work.</dd>
+          <dt data-i18n="s1.getlabel">What you get</dt>
+          <dd data-i18n="s3.get">Build a credible, evidence-backed European growth story — pipeline, logos, momentum — in the time window a raise actually allows.</dd>
+          <dt data-i18n="s1.whylabel">Why it works</dt>
+          <dd data-i18n="s3.why">Success-based commercial incentives align the engagement directly with the traction the board wants to see.</dd>
+        </dl>
+        <a href="contact.html" data-internal class="card-link" data-i18n="s.cta">Tell us about your plan →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="tight">
+  <div class="wrap">
+    <div class="guardrails"><p data-i18n="guardrails">We work with Series A/B technology companies — and strong late-seed teams with clear commercial traction. We don't work with fintech.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><p data-i18n="footer.text">Project EMEA · ProjectEMEA.eu · English · Español · Français</p></div>
+</footer>
+
+<script>
+
+(function(){
+  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "intro": "Three kinds of company bring us in. See which one sounds like you.", "s1.tag": "First Flag", "s1.sub": "First-time entrants — no EMEA presence yet, still deciding whether to commit.", "s1.situation.label": "The situation", "s1.situation": "You know Europe is a growth opportunity but can't justify hiring a VP of EMEA or opening an office before validating a single market.", "s1.getlabel": "What you get", "s1.get": "Validate two or three European markets and start generating pipeline before committing to permanent headcount or infrastructure.", "s1.whylabel": "Why it works", "s1.why": "The Understand → Launch phases are built exactly for this: market and route-to-market validation before commercial commitment.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Already earning EU revenue, but growth has plateaued without local execution.", "s2.situation": "Revenue proves demand exists, but with no one on the ground to run enterprise sales cycles or manage renewals, growth has stalled.", "s2.get": "Turn existing but unmanaged European revenue into a repeatable, growing book of business — without a permanent European team.", "s2.why": "The Grow → Retain phases target this directly: qualified pipeline, enterprise deal progression, and account expansion.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "VC-backed, under investor pressure to show EMEA traction before the next raise.", "s3.situation": "The board wants a European growth story for the next raise, but you can't afford to burn six figures on an office before knowing if it will work.", "s3.get": "Build a credible, evidence-backed European growth story — pipeline, logos, momentum — in the time window a raise actually allows.", "s3.why": "Success-based commercial incentives align the engagement directly with the traction the board wants to see.", "s.cta": "Tell us about your plan →", "guardrails": "We work with Series A/B technology companies — and strong late-seed teams with clear commercial traction. We don't work with fintech."}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "intro": "Nos suelen llamar tres tipos de empresa. Descubre cuál se parece a ti.", "s1.tag": "First Flag", "s1.sub": "Empresas que llegan por primera vez a Europa — sin presencia en EMEA todavía, decidiendo si dar el paso.", "s1.situation.label": "La situación", "s1.situation": "Sabes que Europa es una oportunidad de crecimiento, pero no puedes justificar contratar a un VP de EMEA ni abrir una oficina antes de validar un solo mercado.", "s1.getlabel": "Qué obtienes", "s1.get": "Valida dos o tres mercados europeos y empieza a generar pipeline antes de comprometerte con contrataciones permanentes o infraestructura.", "s1.whylabel": "Por qué funciona", "s1.why": "Las fases Understand → Launch están hechas exactamente para esto: validar el mercado y la vía de entrada antes del compromiso comercial.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Ya facturas en la UE, pero el crecimiento se ha estancado por falta de ejecución local.", "s2.situation": "Los ingresos demuestran que hay demanda, pero sin nadie sobre el terreno para llevar los ciclos de venta empresarial o gestionar renovaciones, el crecimiento se ha frenado.", "s2.get": "Convierte esos ingresos europeos existentes pero sin gestionar en una cartera de negocio repetible y creciente, sin montar un equipo europeo permanente.", "s2.why": "Las fases Grow → Retain se dirigen directamente a esto: pipeline cualificado, avance de operaciones empresariales y expansión de cuentas.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "Respaldada por venture capital, bajo presión de los inversores para mostrar tracción en EMEA antes de la próxima ronda.", "s3.situation": "El consejo quiere una historia de crecimiento europeo para la próxima ronda, pero no te puedes permitir quemar seis cifras en una oficina antes de saber si va a funcionar.", "s3.get": "Construye una historia de crecimiento europeo creíble y respaldada por evidencia — pipeline, logos, impulso — en el plazo que realmente permite una ronda.", "s3.why": "Los incentivos comerciales por resultados alinean el proyecto directamente con la tracción que el consejo quiere ver.", "s.cta": "Cuéntanos tu plan →", "guardrails": "Trabajamos con tecnológicas en Series A/B, y con equipos de late-seed sólido con tracción comercial clara. No trabajamos con fintech."}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "intro": "Trois types d'entreprises font appel à nous. Voyez laquelle vous ressemble.", "s1.tag": "First Flag", "s1.sub": "Primo-entrants — pas encore de présence EMEA, encore en train de décider.", "s1.situation.label": "La situation", "s1.situation": "Vous savez que l'Europe est une opportunité de croissance, mais vous ne pouvez pas justifier l'embauche d'un VP EMEA ou l'ouverture d'un bureau avant d'avoir validé un seul marché.", "s1.getlabel": "Ce que vous obtenez", "s1.get": "Validez deux ou trois marchés européens et commencez à générer du pipeline avant de vous engager sur des effectifs ou une infrastructure permanents.", "s1.whylabel": "Pourquoi ça marche", "s1.why": "Les phases Understand → Launch sont construites exactement pour cela : valider le marché et la voie d'accès avant tout engagement commercial.", "s2.tag": "Stalled Bridgehead", "s2.sub": "Vous générez déjà du revenu en Europe, mais la croissance a plafonné sans exécution locale.", "s2.situation": "Le revenu prouve qu'il y a une demande, mais sans personne sur le terrain pour piloter les cycles de vente entreprise ou gérer les renouvellements, la croissance s'est arrêtée.", "s2.get": "Transformez ce revenu européen existant mais non piloté en un portefeuille d'affaires répétable et croissant, sans monter une équipe européenne permanente.", "s2.why": "Les phases Grow → Retain ciblent directement cela : pipeline qualifié, avancement des deals entreprise et expansion des comptes.", "s3.tag": "Board-Pressure Sprint", "s3.sub": "Soutenue par du capital-risque, sous pression des investisseurs pour montrer une traction EMEA avant la prochaine levée.", "s3.situation": "Le conseil d'administration veut une histoire de croissance européenne pour la prochaine levée, mais vous ne pouvez pas vous permettre de brûler six chiffres dans un bureau avant de savoir si cela va fonctionner.", "s3.get": "Construisez une histoire de croissance européenne crédible et étayée par des preuves — pipeline, références, dynamique — dans le délai qu'une levée impose réellement.", "s3.why": "Les incitations commerciales liées aux résultats alignent la mission directement sur la traction que le conseil veut voir.", "s.cta": "Parlez-nous de votre projet →", "guardrails": "Nous travaillons avec des entreprises tech en Series A/B, et avec des équipes late-seed solides à la traction commerciale claire. Nous ne travaillons pas avec la fintech."}};
+  var LANGS = ['en','es','fr'];
+  function getLang(){
+    try{
+      var q = new URLSearchParams(location.search).get('lang');
+      if (LANGS.indexOf(q) !== -1) return q;
+    }catch(e){}
+    try{
+      var stored = localStorage.getItem('pe_lang');
+      if (LANGS.indexOf(stored) !== -1) return stored;
+    }catch(e){}
+    return 'en';
+  }
+  function applyLang(lang){
+    if (LANGS.indexOf(lang) === -1) lang = 'en';
+    document.documentElement.setAttribute('lang', lang);
+    var dict = I18N[lang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+      else if (I18N.en[key] !== undefined) el.innerHTML = I18N.en[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-ph');
+      var val = dict[key] !== undefined ? dict[key] : I18N.en[key];
+      if (val !== undefined) el.setAttribute('placeholder', val);
+    });
+    document.querySelectorAll('a[data-internal]').forEach(function(a){
+      try{
+        var base = a.getAttribute('data-href') || a.getAttribute('href');
+        if (!a.getAttribute('data-href')) a.setAttribute('data-href', base);
+        var url = new URL(base, location.href);
+        url.searchParams.set('lang', lang);
+        a.setAttribute('href', url.toString());
+      }catch(e){}
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    try{ localStorage.setItem('pe_lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang-btn')); });
+  });
+  var menuBtn = document.querySelector('.menu-toggle');
+  var navLinks = document.querySelector('nav.links');
+  if (menuBtn && navLinks){
+    menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  }
+  window.PE_I18N = I18N;
+  applyLang(getLang());
+  window.__PE_APPLY_LANG__ = applyLang;
+})();
+
+
+</script>
