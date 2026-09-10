@@ -2,171 +2,233 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root{
-    --paper:#eef1ec; --paper-raised:#e2e7e0; --ink:#1c2a27; --ink-soft:#56655f;
-    --line:#c3cdc5; --route:#a8492b; --harbor:#3f6a55; --brass:#7a5a26;
-    --font-display:"Source Serif 4",Georgia,serif;
-    --font-body:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --paper:#f4f5f2; --paper-raised:#e9ebe6; --paper-sunk:#dfe2db; --ink:#12181a; --ink-soft:#56635e;
+    --line:#d5d9d1; --gold:#9c7a2e; --gold-strong:#7e6224; --teal:#2c5a58; --teal-strong:#1e4341;
+    --shadow: 0 1px 2px rgba(18,24,26,.04), 0 8px 24px -12px rgba(18,24,26,.12);
+    --font-display:"Bricolage Grotesque","IBM Plex Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#131c1a; --paper-raised:#1b2521; --ink:#e9ede9; --ink-soft:#9fb0a8;
-      --line:#2e3b36; --route:#e08a5f; --harbor:#7fc3a0; --brass:#d3ac66;
+      --paper:#0b0f10; --paper-raised:#141a1a; --paper-sunk:#1b2222; --ink:#eef1ee; --ink-soft:#9aa6a0;
+      --line:#263030; --gold:#d9b45c; --gold-strong:#e8c878; --teal:#5fb0a3; --teal-strong:#7ecabd;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#131c1a; --paper-raised:#1b2521; --ink:#e9ede9; --ink-soft:#9fb0a8;
-    --line:#2e3b36; --route:#e08a5f; --harbor:#7fc3a0; --brass:#d3ac66;
+    --paper:#0b0f10; --paper-raised:#141a1a; --paper-sunk:#1b2222; --ink:#eef1ee; --ink-soft:#9aa6a0;
+    --line:#263030; --gold:#d9b45c; --gold-strong:#e8c878; --teal:#5fb0a3; --teal-strong:#7ecabd;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;}
-  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);}
-  .wrap{max-width:980px;margin-inline:auto;padding:0 20px;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1140px;margin-inline:auto;padding:0 24px;}
   a{color:inherit;}
+  ::selection{background:var(--gold);color:var(--paper);}
 
-  header{border-bottom:1px solid var(--line);position:relative;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:16px;}
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:16px;}
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-weight:600;
     letter-spacing:.03em;text-transform:uppercase;font-size:.85rem;text-decoration:none;color:var(--ink);
     white-space:nowrap;}
   .brand svg{width:26px;height:26px;flex:none;}
-  nav.links{display:flex;gap:26px;font-size:.88rem;align-items:center;}
-  nav.links a{text-decoration:none;}
-  nav.links a:hover{color:var(--route);}
-  nav.links a.active{color:var(--route);font-weight:600;}
+  nav.links{display:flex;gap:30px;font-size:.9rem;align-items:center;}
+  nav.links a{text-decoration:none;position:relative;padding:4px 0;}
+  nav.links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold);
+    transform:scaleX(0);transform-origin:left;transition:transform .2s ease;}
+  nav.links a:hover::after{transform:scaleX(1);}
+  nav.links a:hover{color:var(--gold);}
+  nav.links a.active{color:var(--gold);font-weight:600;}
+  nav.links a.active::after{transform:scaleX(1);}
   .nav-right{display:flex;align-items:center;gap:16px;}
   .lang-switch{display:flex;gap:4px;font-family:var(--font-mono);font-size:.72rem;}
   .lang-switch button{background:none;border:1px solid var(--line);border-radius:5px;color:var(--ink-soft);
-    padding:4px 7px;cursor:pointer;font-family:inherit;}
-  .lang-switch button.active{border-color:var(--route);color:var(--route);}
-  .nav-cta{background:var(--route);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
-    font-size:.85rem;font-family:var(--font-body);cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;}
+    padding:4px 7px;cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s;}
+  .lang-switch button:hover{color:var(--ink);}
+  .lang-switch button.active{border-color:var(--gold);color:var(--gold);}
+  .nav-cta{background:var(--gold);color:var(--paper);border:none;border-radius:7px;padding:9px 16px;
+    font-size:.85rem;font-family:var(--font-body);font-weight:600;cursor:pointer;text-decoration:none;
+    display:inline-block;white-space:nowrap;transition:background .15s,transform .15s;}
+  .nav-cta:hover{background:var(--gold-strong);transform:translateY(-1px);}
   .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:7px;color:var(--ink);
     font-family:var(--font-mono);font-size:.75rem;padding:7px 10px;cursor:pointer;}
-  @media (max-width:560px){
+  @media (max-width:640px){
+    .wrap{padding:0 18px;}
     nav.links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);
-      border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:6px 20px 14px;z-index:5;}
+      border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:0;padding:6px 18px 14px;z-index:5;}
     nav.links.open{display:flex;}
-    nav.links a{padding:8px 0;width:100%;}
+    nav.links a{padding:10px 0;width:100%;}
+    nav.links a::after{display:none;}
     .menu-toggle{display:inline-block;}
+    .nav-right{gap:8px;}
+    .nav-cta{display:none;}
+    .brand{font-size:.72rem;gap:7px;}
+    .brand svg{width:22px;height:22px;}
+  }
+  @media (max-width:380px){
+    .lang-switch{display:none;}
   }
 
-  .hero{padding:56px 0 48px;text-align:center;}
-  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--brass);margin:0 0 14px;}
-  h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,1.3rem + 3vw,3.1rem);
-    line-height:1.12;margin:0 0 18px;text-wrap:balance;}
-  .hero p{font-size:1.08rem;line-height:1.6;color:var(--ink-soft);max-width:58ch;margin:0 auto 28px;}
-  .btn-primary{display:inline-block;background:var(--route);color:var(--paper);text-decoration:none;
-    border-radius:8px;padding:13px 24px;font-size:.95rem;font-weight:600;border:none;cursor:pointer;font-family:var(--font-body);}
+  .hero{padding:clamp(48px,6vw,84px) 0 clamp(40px,5vw,64px);text-align:center;}
+  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--teal);margin:0 0 16px;}
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,1.3rem + 3.4vw,3.6rem);
+    line-height:1.08;letter-spacing:-.01em;margin:0 0 20px;text-wrap:balance;}
+  .hero p{font-size:1.15rem;line-height:1.62;color:var(--ink-soft);max-width:60ch;margin:0 auto 32px;}
+  .btn-primary{display:inline-block;background:var(--gold);color:var(--paper);text-decoration:none;
+    border-radius:8px;padding:14px 26px;font-size:.96rem;font-weight:600;border:none;cursor:pointer;
+    font-family:var(--font-body);transition:background .15s,transform .15s,box-shadow .15s;}
+  .btn-primary:hover{background:var(--gold-strong);transform:translateY(-1px);box-shadow:var(--shadow);}
   .btn-primary:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
-    outline:2px solid var(--route);outline-offset:2px;}
+    outline:2px solid var(--gold);outline-offset:2px;}
 
-  .strip{background:var(--paper-raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;}
-  .strip p{max-width:66ch;margin:0 auto;text-align:center;font-size:1rem;line-height:1.6;}
+  .strip{background:var(--paper-raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:38px 0;}
+  .strip p{max-width:68ch;margin:0 auto;text-align:center;font-size:1.05rem;line-height:1.6;}
 
-  section{padding:56px 0;}
-  section.tight{padding:40px 0;}
-  h2.section-title{font-family:var(--font-display);font-weight:600;font-size:1.5rem;text-align:center;margin:0 0 8px;}
-  .section-sub{text-align:center;color:var(--ink-soft);font-size:.92rem;margin:0 0 32px;}
-  .page-header{padding:48px 0 8px;text-align:center;}
-  .page-header h1{font-size:clamp(1.7rem,1.3rem + 2vw,2.4rem);}
-  .page-header p{color:var(--ink-soft);font-size:1rem;max-width:60ch;margin:0 auto;}
+  section{padding:clamp(48px,6vw,80px) 0;}
+  section.tight{padding:clamp(36px,4.5vw,52px) 0;}
+  h2.section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,1.2rem + 1vw,2rem);
+    text-align:center;margin:0 0 10px;letter-spacing:-.01em;}
+  .section-sub{text-align:center;color:var(--ink-soft);font-size:.98rem;margin:0 0 40px;max-width:56ch;margin-inline:auto;}
+  .page-header{padding:clamp(40px,5vw,64px) 0 8px;text-align:center;}
+  .page-header h1{font-size:clamp(1.9rem,1.3rem + 2.4vw,2.8rem);}
+  .page-header p{color:var(--ink-soft);font-size:1.05rem;max-width:62ch;margin:0 auto;}
 
-  .segments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media (max-width:560px){ .segments{grid-template-columns:1fr;} }
-  .card{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:22px;transition:border-color .15s;}
-  .card:hover{border-color:var(--route);}
-  .card .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
-    color:var(--brass);margin:0 0 8px;}
-  .card h3{font-family:var(--font-display);font-size:1.15rem;margin:0 0 10px;}
-  .card p{font-size:.92rem;color:var(--ink-soft);line-height:1.55;margin:0 0 14px;}
-  .card a.card-link{color:var(--route);font-size:.86rem;text-decoration:none;font-weight:600;}
+  [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);}
+  [data-reveal].is-visible{opacity:1;transform:none;}
+  [data-reveal-group] [data-reveal]:nth-child(2){transition-delay:.08s;}
+  [data-reveal-group] [data-reveal]:nth-child(3){transition-delay:.16s;}
+  [data-reveal-group] [data-reveal]:nth-child(4){transition-delay:.24s;}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1!important;transform:none!important;transition:none!important;}
+  }
 
-  .framework{display:flex;justify-content:space-between;gap:10px;position:relative;}
-  .framework::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:2px;background:var(--line);}
-  @media (max-width:560px){ .framework{flex-wrap:wrap;row-gap:22px;} .framework::before{display:none;} }
-  .step{position:relative;z-index:1;flex:1;text-align:center;min-width:96px;}
-  .step .dot{width:48px;height:48px;border-radius:50%;background:var(--paper);border:2px solid var(--harbor);
-    color:var(--harbor);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);
-    font-weight:600;margin:0 auto 10px;}
-  .step h4{font-size:.92rem;margin:0 0 4px;}
-  .step p{font-size:.78rem;color:var(--ink-soft);margin:0;line-height:1.4;}
+  .segments{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:860px){ .segments{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .segments{grid-template-columns:1fr;} }
+  .card{background:var(--paper-raised);border:1px solid var(--line);border-radius:14px;padding:26px;
+    transition:border-color .18s,transform .18s,box-shadow .18s;}
+  .card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow);}
+  .card .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);margin:0 0 10px;}
+  .card h3{font-family:var(--font-display);font-weight:700;font-size:1.18rem;margin:0 0 10px;letter-spacing:-.005em;}
+  .card p{font-size:.94rem;color:var(--ink-soft);line-height:1.58;margin:0 0 16px;}
+  .card a.card-link{color:var(--gold);font-size:.87rem;text-decoration:none;font-weight:600;}
+  .card a.card-link:hover{text-decoration:underline;}
 
-  .proof{background:var(--ink);color:var(--paper);border-radius:14px;padding:36px 28px;text-align:center;}
-  .proof p{max-width:62ch;margin:0 auto;font-size:1rem;line-height:1.65;color:var(--paper);opacity:.92;}
-  .proof strong{color:var(--paper);opacity:1;}
+  /* Growth Framework — scroll-driven vertical timeline */
+  .framework{position:relative;max-width:640px;margin:0 auto;padding-left:0;}
+  .framework::before{content:"";position:absolute;left:23px;top:26px;bottom:26px;width:2px;background:var(--line);}
+  .framework-fill{position:absolute;left:23px;top:26px;width:2px;height:0;background:var(--gold);
+    transition:height .1s linear;}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:22px;align-items:start;position:relative;padding-bottom:38px;}
+  .step:last-child{padding-bottom:0;}
+  .step .dot{width:48px;height:48px;border-radius:50%;background:var(--paper);border:2px solid var(--line);
+    color:var(--ink-soft);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);
+    font-weight:600;position:relative;z-index:1;transition:border-color .3s,color .3s,background .3s,box-shadow .3s;}
+  .step.is-active .dot{border-color:var(--gold);color:var(--paper);background:var(--gold);
+    box-shadow:0 0 0 6px color-mix(in srgb, var(--gold) 16%, transparent);}
+  .step .step-body{padding-top:6px;}
+  .step h4{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin:0 0 5px;}
+  .step p{font-size:.9rem;color:var(--ink-soft);margin:0;line-height:1.5;max-width:48ch;}
+  @media (prefers-reduced-motion: reduce){ .framework-fill{transition:none;} }
 
-  .models{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
-  .pill{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:.85rem;font-family:var(--font-mono);}
-  .pill.addon{border-color:var(--harbor);color:var(--harbor);}
+  .proof{background:var(--ink);color:var(--paper);border-radius:16px;padding:40px 32px;text-align:center;}
+  .proof p{max-width:64ch;margin:0 auto;font-size:1.05rem;line-height:1.65;color:var(--paper);opacity:.92;}
+  .proof strong{color:var(--gold-strong);opacity:1;}
+  :root:not([data-theme="light"]) .proof strong, [data-theme="dark"] .proof strong{color:var(--gold);}
 
-  .cta-band{background:var(--paper-raised);border-top:1px solid var(--line);text-align:center;padding:52px 20px;}
-  .cta-band h2{font-family:var(--font-display);font-size:1.6rem;margin:0 0 20px;font-weight:600;}
+  .cta-band{background:var(--paper-raised);border-top:1px solid var(--line);text-align:center;padding:clamp(44px,6vw,64px) 20px;}
+  .cta-band h2{font-family:var(--font-display);font-size:clamp(1.4rem,1.1rem + 1vw,1.85rem);margin:0 0 22px;font-weight:700;}
 
-  footer{padding:28px 0;text-align:center;font-size:.8rem;color:var(--ink-soft);}
+  footer{padding:32px 0;text-align:center;font-size:.82rem;color:var(--ink-soft);}
 
   /* Who We Help — full segment sections */
-  .segment-full{border-top:1px solid var(--line);padding:44px 0;display:grid;grid-template-columns:220px 1fr;gap:36px;}
+  .segment-full{border-top:1px solid var(--line);padding:48px 0;display:grid;grid-template-columns:230px 1fr;gap:40px;}
   .segment-full:first-of-type{border-top:none;}
-  @media (max-width:560px){ .segment-full{grid-template-columns:1fr;gap:16px;} }
-  .segment-full .tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--brass);margin:0 0 8px;}
-  .segment-full h3{font-family:var(--font-display);font-size:1.3rem;margin:0;line-height:1.3;}
-  .segment-full .sub{color:var(--ink-soft);font-size:.9rem;margin-top:8px;line-height:1.5;}
-  .segment-body dt{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;
-    color:var(--harbor);margin:18px 0 6px;}
+  @media (max-width:640px){ .segment-full{grid-template-columns:1fr;gap:16px;} }
+  .segment-full .tag{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin:0 0 8px;}
+  .segment-full h3{font-family:var(--font-display);font-weight:700;font-size:1.4rem;margin:0;line-height:1.28;letter-spacing:-.005em;}
+  .segment-full .sub{color:var(--ink-soft);font-size:.92rem;margin-top:8px;line-height:1.5;}
+  .segment-body dt{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);margin:20px 0 6px;}
   .segment-body dt:first-child{margin-top:0;}
-  .segment-body dd{margin:0;font-size:.98rem;line-height:1.6;color:var(--ink);}
-  .segment-full .card-link{display:inline-block;margin-top:18px;color:var(--route);font-weight:600;text-decoration:none;font-size:.92rem;}
+  .segment-body dd{margin:0;font-size:1rem;line-height:1.62;color:var(--ink);}
+  .segment-full .card-link{display:inline-block;margin-top:20px;color:var(--gold);font-weight:600;text-decoration:none;font-size:.92rem;}
+  .segment-full .card-link:hover{text-decoration:underline;}
 
-  .guardrails{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;padding:18px 22px;
+  .guardrails{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:20px 24px;
     text-align:center;margin-top:8px;}
   .guardrails p{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;
     color:var(--ink-soft);margin:0;line-height:1.7;}
 
   /* How We Work — pillar grid */
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  @media (max-width:800px){ .pillars{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .pillars{grid-template-columns:1fr;} }
-  .pillar h3{font-family:var(--font-display);font-size:1.05rem;margin:0 0 8px;}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:860px){ .pillars{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:640px){ .pillars{grid-template-columns:1fr;} }
+  .pillar h3{font-family:var(--font-display);font-weight:700;font-size:1.08rem;margin:0 0 8px;}
   .pillar p{font-size:.9rem;color:var(--ink-soft);line-height:1.5;margin:0;}
 
-  .pull-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,1rem + 1vw,1.6rem);
-    text-align:center;max-width:52ch;margin:0 auto;line-height:1.4;color:var(--ink);text-wrap:balance;}
-  .pull-quote::before, .pull-quote::after{color:var(--route);}
+  .pull-quote{font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,1rem + 1.2vw,1.75rem);
+    text-align:center;max-width:54ch;margin:0 auto;line-height:1.38;color:var(--ink);text-wrap:balance;letter-spacing:-.01em;}
+  .pull-quote::before, .pull-quote::after{color:var(--gold);}
 
   /* Engagement Models */
-  .models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  @media (max-width:560px){ .models-grid{grid-template-columns:1fr;} }
-  .model-card h3{font-family:var(--font-display);font-size:1.1rem;margin:0 0 10px;color:var(--route);}
-  .model-card p{font-size:.92rem;color:var(--ink-soft);line-height:1.55;margin:0;}
-  .addon-card{border-color:var(--harbor);}
-  .addon-card p{color:var(--ink);}
-  .addon-card .tag{color:var(--harbor);}
+  .models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  @media (max-width:640px){ .models-grid{grid-template-columns:1fr;} }
+  .model-card{display:flex;flex-direction:column;}
+  .model-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin:0 0 8px;color:var(--gold);letter-spacing:-.005em;}
+  .model-card p.model-desc{font-size:.92rem;color:var(--ink-soft);line-height:1.55;margin:0 0 14px;}
+  .model-card .model-best{font-size:.82rem;color:var(--teal);font-weight:600;margin:0 0 14px;line-height:1.4;}
+  .model-included{list-style:none;margin:0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
+  .model-included li{display:flex;gap:9px;align-items:flex-start;font-size:.87rem;line-height:1.5;color:var(--ink);}
+  .model-included li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:.5em;}
+  .addon-card{border-color:var(--teal);}
+  .addon-card h3{color:var(--teal);}
+  .addon-card .model-included li::before{background:var(--teal);}
+  .addon-card .model-best{color:var(--gold);}
 
-  .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:60ch;margin-inline:auto;}
-  .checklist li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;line-height:1.55;}
-  .checklist .mark{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--harbor);color:var(--harbor);
+  .checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:60ch;margin-inline:auto;}
+  .checklist li{display:flex;gap:14px;align-items:flex-start;font-size:.98rem;line-height:1.55;}
+  .checklist .mark{flex:none;width:27px;height:27px;border-radius:50%;border:2px solid var(--teal);color:var(--teal);
     display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;margin-top:1px;}
 
+  /* FAQ accordion */
+  .faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+  .faq-item{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;padding:4px 20px;
+    transition:border-color .15s;}
+  .faq-item[open]{border-color:var(--gold);}
+  .faq-item summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:1rem;
+    padding:16px 28px 16px 0;position:relative;list-style:none;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";position:absolute;right:2px;top:14px;font-family:var(--font-mono);
+    font-size:1.2rem;color:var(--gold);transition:transform .2s;}
+  .faq-item[open] summary::after{content:"\2212";}
+  .faq-item p{margin:0 0 18px;color:var(--ink-soft);font-size:.92rem;line-height:1.6;}
+
   /* Contact */
-  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
-  @media (max-width:560px){ .contact-grid{grid-template-columns:1fr;gap:28px;} }
-  form.contact-form{display:flex;flex-direction:column;gap:14px;}
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:start;}
+  @media (max-width:640px){ .contact-grid{grid-template-columns:1fr;gap:28px;} }
+  form.contact-form{display:flex;flex-direction:column;gap:16px;}
   .field{display:flex;flex-direction:column;gap:6px;}
   .field label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);}
   .field input, .field select, .field textarea{
-    font-family:var(--font-body);font-size:.96rem;padding:11px 12px;border:1px solid var(--line);
-    border-radius:8px;background:var(--paper-raised);color:var(--ink);}
-  .field textarea{min-height:110px;resize:vertical;}
-  .direct-contact{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:24px;}
-  .direct-contact h3{font-family:var(--font-display);font-size:1.05rem;margin:0 0 10px;}
+    font-family:var(--font-body);font-size:.98rem;padding:12px 13px;border:1px solid var(--line);
+    border-radius:8px;background:var(--paper-raised);color:var(--ink);transition:border-color .15s;}
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--gold);}
+  .field textarea{min-height:118px;resize:vertical;}
+  .direct-contact{background:var(--paper-raised);border:1px solid var(--line);border-radius:14px;padding:26px;}
+  .direct-contact h3{font-family:var(--font-display);font-weight:700;font-size:1.08rem;margin:0 0 10px;}
   .direct-contact p{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin:0 0 6px;}
   .direct-contact .value{color:var(--ink);font-weight:600;}
-  .form-note{font-size:.85rem;color:var(--harbor);margin-top:4px;display:none;}
+  .form-note{font-size:.85rem;color:var(--teal);margin-top:4px;display:none;}
   .form-note.show{display:block;}
 </style>
 
@@ -174,12 +236,12 @@
   <div class="wrap nav">
     <a class="brand" href="index.html" data-internal>
       <svg viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="20" cy="20" r="18" fill="none" stroke="#c3cdc5" stroke-width="1.2"/>
-        <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#a8492b"/>
-        <path d="M20 36 L17 22 L20 20 L23 22 Z" fill="#56655f"/>
-        <path d="M4 20 L18 17 L20 20 L18 23 Z" fill="#56655f"/>
-        <path d="M36 20 L22 23 L20 20 L22 17 Z" fill="#56655f"/>
-        <circle cx="20" cy="20" r="2" fill="#7a5a26"/>
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#d5d9d1" stroke-width="1.2"/>
+        <path d="M20 4 L23 18 L20 20 L17 18 Z" fill="#9c7a2e"/>
+        <path d="M20 36 L17 22 L20 20 L23 22 Z" fill="#56635e"/>
+        <path d="M4 20 L18 17 L20 20 L18 23 Z" fill="#56635e"/>
+        <path d="M36 20 L22 23 L20 20 L22 17 Z" fill="#56635e"/>
+        <circle cx="20" cy="20" r="2" fill="#2c5a58"/>
       </svg>
       Project EMEA
     </a>
@@ -213,15 +275,40 @@
 </section>
 <section class="tight">
   <div class="wrap">
-    <div class="models-grid">
-      <div class="card model-card"><h3 data-i18n="m1.h">Fixed-Price Assessment</h3><p data-i18n="m1.p">A scoped market and readiness assessment — the lowest-commitment way to start.</p></div>
-      <div class="card model-card"><h3 data-i18n="m2.h">Strategic Growth Retainer</h3><p data-i18n="m2.p">Monthly, embedded execution across the Growth Framework.</p></div>
-      <div class="card model-card"><h3 data-i18n="m3.h">Success-Based Incentives</h3><p data-i18n="m3.p">Commercial terms tied to the traction actually delivered.</p></div>
-      <div class="card model-card"><h3 data-i18n="m4.h">Fractional Leadership</h3><p data-i18n="m4.p">An outsourced European commercial lead, part- or full-time.</p></div>
+    <div class="models-grid" data-reveal-group>
+      
+      <div class="card model-card" data-reveal>
+        <h3 data-i18n="m1.h">Fixed-Price Assessment</h3>
+        <p class="model-desc" data-i18n="m1.p">A scoped market and readiness assessment — the lowest-commitment way to start.</p>
+        <p class="model-best" data-i18n="m1.best">Best for teams still deciding whether Europe is worth the investment.</p>
+        <ul class="model-included"><li data-i18n="m1.inc1">A scoped assessment of 2–3 priority European markets.</li><li data-i18n="m1.inc2">Route-to-market and ICP validation grounded in your actual product.</li><li data-i18n="m1.inc3">A written go/no-go recommendation with a proposed next step.</li></ul>
+      </div>
+      <div class="card model-card" data-reveal>
+        <h3 data-i18n="m2.h">Strategic Growth Retainer</h3>
+        <p class="model-desc" data-i18n="m2.p">Monthly, embedded execution across the Growth Framework.</p>
+        <p class="model-best" data-i18n="m2.best">Best for teams ready to commit to sustained European execution.</p>
+        <ul class="model-included"><li data-i18n="m2.inc1">Embedded, monthly execution across the full Growth Framework.</li><li data-i18n="m2.inc2">A dedicated point of contact who runs point on your behalf.</li><li data-i18n="m2.inc3">Monthly reporting against pipeline, logos and momentum.</li></ul>
+      </div>
+      <div class="card model-card" data-reveal>
+        <h3 data-i18n="m3.h">Success-Based Incentives</h3>
+        <p class="model-desc" data-i18n="m3.p">Commercial terms tied to the traction actually delivered.</p>
+        <p class="model-best" data-i18n="m3.best">Best for teams that want European growth de-risked commercially.</p>
+        <ul class="model-included"><li data-i18n="m3.inc1">Commercial terms tied to qualified pipeline or closed revenue.</li><li data-i18n="m3.inc2">Aligned incentives — we only win when your European growth does.</li><li data-i18n="m3.inc3">Typically layered on top of a Retainer or Fractional Leadership model.</li></ul>
+      </div>
+      <div class="card model-card" data-reveal>
+        <h3 data-i18n="m4.h">Fractional Leadership</h3>
+        <p class="model-desc" data-i18n="m4.p">An outsourced European commercial lead, part- or full-time.</p>
+        <p class="model-best" data-i18n="m4.best">Best for teams that need a European commercial leader, not just execution.</p>
+        <ul class="model-included"><li data-i18n="m4.inc1">An outsourced VP/Head of EMEA, part- or full-time.</li><li data-i18n="m4.inc2">Represents you in market — partners, customers, hires.</li><li data-i18n="m4.inc3">A built-in path to a permanent hire when the time is right.</li></ul>
+      </div>
     </div>
-    <div class="card addon-card" style="margin-top:16px;">
-      <p data-i18n="addon" style="margin:0;font-size:.95rem;line-height:1.55;">Optional add-on — Marketing &amp; Demand-Generation: fractional GTM/marketing leadership and hands-on demand-gen execution, available across all four models above.</p>
-    </div>
+    
+      <div class="card model-card addon-card" data-reveal>
+        <h3 data-i18n="addon.h">Marketing &amp; Demand-Generation</h3>
+        <p class="model-desc" data-i18n="addon">Optional add-on — available across all four models above.</p>
+        <p class="model-best" data-i18n="addon.best">Best for teams whose growth story needs a stronger pipeline engine, not just sales execution.</p>
+        <ul class="model-included"><li data-i18n="addon.inc1">Fractional GTM/marketing leadership across positioning, messaging and channel strategy.</li><li data-i18n="addon.inc2">Hands-on demand-generation execution — campaigns, content, and channel testing.</li><li data-i18n="addon.inc3">Layered onto any of the four models above — never sold as a standalone engagement.</li></ul>
+      </div>
   </div>
 </section>
 <section class="tight">
@@ -235,8 +322,32 @@
     </ul>
   </div>
 </section>
+<section class="tight">
+  <div class="wrap">
+    <h2 class="section-title" data-i18n="faq.title">Common Questions</h2>
+    <p class="section-sub" data-i18n="faq.sub">The things most teams ask before their first conversation with us.</p>
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary data-i18n="faq1.q">How quickly can we start?</summary>
+        <p data-i18n="faq1.a">Most engagements begin within two to three weeks of a signed agreement — faster for a Fixed-Price Assessment, since it has the smallest scope.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq2.q">Do we need to relocate anyone to Europe?</summary>
+        <p data-i18n="faq2.a">No. We are your European commercial team — that is the entire point of the model. You stay focused on product and home-market growth.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq3.q">What happens after the Fixed-Price Assessment?</summary>
+        <p data-i18n="faq3.a">You get a clear go/no-go recommendation and a proposed next step — typically a Retainer or Fractional Leadership engagement. There's no obligation to continue.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq4.q">Can we combine models?</summary>
+        <p data-i18n="faq4.a">Yes — most long-term clients layer Success-Based Incentives or the Marketing &amp; Demand-Generation add-on on top of a Retainer or Fractional Leadership engagement.</p>
+      </details>
+    </div>
+  </div>
+</section>
 <div class="cta-band">
-  <p style="margin:0;"><a href="contact.html" data-internal data-i18n="cta" style="color:var(--route);font-weight:600;text-decoration:none;font-family:var(--font-display);font-size:1.15rem;">Not sure which model fits? Let's talk it through →</a></p>
+  <p style="margin:0;"><a href="contact.html" data-internal data-i18n="cta" style="color:var(--gold);font-weight:600;text-decoration:none;font-family:var(--font-display);font-size:1.2rem;">Not sure which model fits? Let's talk it through →</a></p>
 </div>
 
 </main>
@@ -248,7 +359,7 @@
 <script>
 
 (function(){
-  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Engagement Models", "sub": "Start where it makes sense for you.", "m1.h": "Fixed-Price Assessment", "m1.p": "A scoped market and readiness assessment — the lowest-commitment way to start.", "m2.h": "Strategic Growth Retainer", "m2.p": "Monthly, embedded execution across the Growth Framework.", "m3.h": "Success-Based Incentives", "m3.p": "Commercial terms tied to the traction actually delivered.", "m4.h": "Fractional Leadership", "m4.p": "An outsourced European commercial lead, part- or full-time.", "addon": "Optional add-on — Marketing &amp; Demand-Generation: fractional GTM/marketing leadership and hands-on demand-gen execution, available across all four models above.", "days.title": "The First 90 Days", "day1": "Deep discovery into your business, product and value proposition.", "day2": "Market and competitor assessment, ICP refinement.", "day3": "Commercial messaging and sales enablement.", "day4": "Executive introductions and first pipeline.", "cta": "Not sure which model fits? Let's talk it through →"}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "title": "Modelos de colaboración", "sub": "Empieza donde tenga sentido para ti.", "m1.h": "Evaluación a precio fijo", "m1.p": "Una evaluación acotada de mercado y de preparación — la forma de empezar con menos compromiso.", "m2.h": "Retenedor estratégico de crecimiento", "m2.p": "Ejecución mensual e integrada a lo largo del Growth Framework.", "m3.h": "Incentivos por resultados", "m3.p": "Condiciones comerciales ligadas a la tracción realmente entregada.", "m4.h": "Liderazgo fraccional", "m4.p": "Un responsable comercial europeo externalizado, a tiempo parcial o completo.", "addon": "Add-on opcional — Marketing y Generación de Demanda: liderazgo fraccional de GTM/marketing y ejecución práctica de demand-gen, disponible en los cuatro modelos anteriores.", "days.title": "Los primeros 90 días", "day1": "Descubrimiento en profundidad de tu negocio, tu producto y tu propuesta de valor.", "day2": "Evaluación de mercado y competencia, y refinamiento del ICP.", "day3": "Mensajería comercial y habilitación de ventas.", "day4": "Presentaciones a directivos y primer pipeline.", "cta": "¿No sabes qué modelo se ajusta mejor? Hablémoslo →"}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Modèles de collaboration", "sub": "Commencez là où cela a du sens pour vous.", "m1.h": "Évaluation à prix fixe", "m1.p": "Une évaluation cadrée du marché et de votre degré de préparation — la façon de démarrer avec le moins d'engagement.", "m2.h": "Mission stratégique de croissance", "m2.p": "Exécution mensuelle et intégrée sur l'ensemble du Growth Framework.", "m3.h": "Incitations liées aux résultats", "m3.p": "Conditions commerciales liées à la traction réellement obtenue.", "m4.h": "Direction commerciale à temps partagé", "m4.p": "Un responsable commercial européen externalisé, à temps partiel ou complet.", "addon": "Option — Marketing et génération de demande : direction fractionnée GTM/marketing et exécution opérationnelle de demand-gen, disponible sur les quatre modèles ci-dessus.", "days.title": "Les 90 premiers jours", "day1": "Découverte approfondie de votre activité, votre produit et votre proposition de valeur.", "day2": "Évaluation du marché et de la concurrence, affinement de l'ICP.", "day3": "Messages commerciaux et outillage des ventes.", "day4": "Introductions auprès de décideurs et premier pipeline.", "cta": "Vous ne savez pas quel modèle vous correspond ? Parlons-en →"}};
+  var I18N = {"en": {"nav.who": "Who We Help", "nav.how": "How We Work", "nav.engagement": "Engagement Models", "nav.contact": "Contact", "nav.cta": "Talk to us", "eyebrow": "European Growth Partner", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Engagement Models", "sub": "Start where it makes sense for you.", "m1.h": "Fixed-Price Assessment", "m1.p": "A scoped market and readiness assessment — the lowest-commitment way to start.", "m1.best": "Best for teams still deciding whether Europe is worth the investment.", "m1.inc1": "A scoped assessment of 2–3 priority European markets.", "m1.inc2": "Route-to-market and ICP validation grounded in your actual product.", "m1.inc3": "A written go/no-go recommendation with a proposed next step.", "m2.h": "Strategic Growth Retainer", "m2.p": "Monthly, embedded execution across the Growth Framework.", "m2.best": "Best for teams ready to commit to sustained European execution.", "m2.inc1": "Embedded, monthly execution across the full Growth Framework.", "m2.inc2": "A dedicated point of contact who runs point on your behalf.", "m2.inc3": "Monthly reporting against pipeline, logos and momentum.", "m3.h": "Success-Based Incentives", "m3.p": "Commercial terms tied to the traction actually delivered.", "m3.best": "Best for teams that want European growth de-risked commercially.", "m3.inc1": "Commercial terms tied to qualified pipeline or closed revenue.", "m3.inc2": "Aligned incentives — we only win when your European growth does.", "m3.inc3": "Typically layered on top of a Retainer or Fractional Leadership model.", "m4.h": "Fractional Leadership", "m4.p": "An outsourced European commercial lead, part- or full-time.", "m4.best": "Best for teams that need a European commercial leader, not just execution.", "m4.inc1": "An outsourced VP/Head of EMEA, part- or full-time.", "m4.inc2": "Represents you in market — partners, customers, hires.", "m4.inc3": "A built-in path to a permanent hire when the time is right.", "addon": "Optional add-on — Marketing &amp; Demand-Generation: fractional GTM/marketing leadership and hands-on demand-gen execution, available across all four models above.", "addon.h": "Marketing &amp; Demand-Generation", "addon.best": "Best for teams whose growth story needs a stronger pipeline engine, not just sales execution.", "addon.inc1": "Fractional GTM/marketing leadership across positioning, messaging and channel strategy.", "addon.inc2": "Hands-on demand-generation execution — campaigns, content, and channel testing.", "addon.inc3": "Layered onto any of the four models above — never sold as a standalone engagement.", "faq.title": "Common Questions", "faq.sub": "The things most teams ask before their first conversation with us.", "faq1.q": "How quickly can we start?", "faq1.a": "Most engagements begin within two to three weeks of a signed agreement — faster for a Fixed-Price Assessment, since it has the smallest scope.", "faq2.q": "Do we need to relocate anyone to Europe?", "faq2.a": "No. We are your European commercial team — that is the entire point of the model. You stay focused on product and home-market growth.", "faq3.q": "What happens after the Fixed-Price Assessment?", "faq3.a": "You get a clear go/no-go recommendation and a proposed next step — typically a Retainer or Fractional Leadership engagement. There's no obligation to continue.", "faq4.q": "Can we combine models?", "faq4.a": "Yes — most long-term clients layer Success-Based Incentives or the Marketing &amp; Demand-Generation add-on on top of a Retainer or Fractional Leadership engagement.", "days.title": "The First 90 Days", "day1": "Deep discovery into your business, product and value proposition.", "day2": "Market and competitor assessment, ICP refinement.", "day3": "Commercial messaging and sales enablement.", "day4": "Executive introductions and first pipeline.", "cta": "Not sure which model fits? Let's talk it through →"}, "es": {"nav.who": "A quién ayudamos", "nav.how": "Cómo trabajamos", "nav.engagement": "Modelos de colaboración", "nav.contact": "Contacto", "nav.cta": "Hablemos", "eyebrow": "Socio de Crecimiento Europeo", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menú", "title": "Modelos de colaboración", "sub": "Empieza donde tenga sentido para ti.", "m1.h": "Evaluación a precio fijo", "m1.p": "Una evaluación acotada de mercado y de preparación — la forma de empezar con menos compromiso.", "m1.best": "Ideal para equipos que aún están decidiendo si Europa merece la inversión.", "m1.inc1": "Una evaluación acotada de 2 a 3 mercados europeos prioritarios.", "m1.inc2": "Validación de ruta de entrada e ICP basada en tu producto real.", "m1.inc3": "Una recomendación por escrito de seguir o no, con el siguiente paso propuesto.", "m2.h": "Retenedor estratégico de crecimiento", "m2.p": "Ejecución mensual e integrada a lo largo del Growth Framework.", "m2.best": "Ideal para equipos listos para comprometerse con una ejecución europea sostenida.", "m2.inc1": "Ejecución mensual e integrada a lo largo de todo el Growth Framework.", "m2.inc2": "Un punto de contacto dedicado que actúa en tu nombre.", "m2.inc3": "Informes mensuales sobre pipeline, logos e impulso.", "m3.h": "Incentivos por resultados", "m3.p": "Condiciones comerciales ligadas a la tracción realmente entregada.", "m3.best": "Ideal para equipos que quieren reducir el riesgo comercial del crecimiento europeo.", "m3.inc1": "Condiciones comerciales ligadas a pipeline cualificado o ingresos cerrados.", "m3.inc2": "Incentivos alineados — solo ganamos si tu crecimiento europeo también gana.", "m3.inc3": "Normalmente se combina con un Retenedor o Liderazgo Fraccional.", "m4.h": "Liderazgo fraccional", "m4.p": "Un responsable comercial europeo externalizado, a tiempo parcial o completo.", "m4.best": "Ideal para equipos que necesitan un líder comercial europeo, no solo ejecución.", "m4.inc1": "Un VP/Head of EMEA externalizado, a tiempo parcial o completo.", "m4.inc2": "Te representa en el mercado — socios, clientes, contrataciones.", "m4.inc3": "Un camino integrado hacia una contratación permanente cuando llegue el momento.", "addon": "Add-on opcional — Marketing y Generación de Demanda: liderazgo fraccional de GTM/marketing y ejecución práctica de demand-gen, disponible en los cuatro modelos anteriores.", "addon.h": "Marketing y Generación de Demanda", "addon.best": "Ideal para equipos cuya historia de crecimiento necesita un motor de pipeline más fuerte, no solo ejecución de ventas.", "addon.inc1": "Liderazgo fraccional de GTM/marketing en posicionamiento, mensajería y estrategia de canales.", "addon.inc2": "Ejecución práctica de generación de demanda — campañas, contenido y pruebas de canal.", "addon.inc3": "Se añade a cualquiera de los cuatro modelos anteriores — nunca se vende como proyecto independiente.", "faq.title": "Preguntas frecuentes", "faq.sub": "Lo que la mayoría de los equipos preguntan antes de su primera conversación con nosotros.", "faq1.q": "¿Con qué rapidez podemos empezar?", "faq1.a": "La mayoría de los proyectos comienzan entre dos y tres semanas después de firmar el acuerdo — más rápido en el caso de una Evaluación a Precio Fijo, por su alcance más reducido.", "faq2.q": "¿Necesitamos trasladar a alguien a Europa?", "faq2.a": "No. Nosotros somos tu equipo comercial europeo — ese es precisamente el objetivo del modelo. Tú te concentras en el producto y en el crecimiento de tu mercado local.", "faq3.q": "¿Qué pasa después de la Evaluación a Precio Fijo?", "faq3.a": "Recibes una recomendación clara de seguir o no, junto con el siguiente paso propuesto — normalmente un Retenedor o un Liderazgo Fraccional. No hay obligación de continuar.", "faq4.q": "¿Podemos combinar modelos?", "faq4.a": "Sí — la mayoría de los clientes a largo plazo combinan Incentivos por Resultados o el add-on de Marketing y Generación de Demanda con un Retenedor o un Liderazgo Fraccional.", "days.title": "Los primeros 90 días", "day1": "Descubrimiento en profundidad de tu negocio, tu producto y tu propuesta de valor.", "day2": "Evaluación de mercado y competencia, y refinamiento del ICP.", "day3": "Mensajería comercial y habilitación de ventas.", "day4": "Presentaciones a directivos y primer pipeline.", "cta": "¿No sabes qué modelo se ajusta mejor? Hablémoslo →"}, "fr": {"nav.who": "Qui nous aidons", "nav.how": "Notre méthode", "nav.engagement": "Modèles de collaboration", "nav.contact": "Contact", "nav.cta": "Parlons-en", "eyebrow": "Partenaire de Croissance Européenne", "footer.text": "Project EMEA · ProjectEMEA.eu · English · Español · Français", "menu.open": "Menu", "title": "Modèles de collaboration", "sub": "Commencez là où cela a du sens pour vous.", "m1.h": "Évaluation à prix fixe", "m1.p": "Une évaluation cadrée du marché et de votre degré de préparation — la façon de démarrer avec le moins d'engagement.", "m1.best": "Idéal pour les équipes qui hésitent encore à investir en Europe.", "m1.inc1": "Une évaluation cadrée de 2 à 3 marchés européens prioritaires.", "m1.inc2": "Validation de la voie d'accès et de l'ICP fondée sur votre produit réel.", "m1.inc3": "Une recommandation écrite de poursuivre ou non, avec la prochaine étape proposée.", "m2.h": "Mission stratégique de croissance", "m2.p": "Exécution mensuelle et intégrée sur l'ensemble du Growth Framework.", "m2.best": "Idéal pour les équipes prêtes à s'engager dans une exécution européenne durable.", "m2.inc1": "Exécution mensuelle et intégrée sur l'ensemble du Growth Framework.", "m2.inc2": "Un point de contact dédié qui agit en votre nom.", "m2.inc3": "Rapports mensuels sur le pipeline, les références et la dynamique.", "m3.h": "Incitations liées aux résultats", "m3.p": "Conditions commerciales liées à la traction réellement obtenue.", "m3.best": "Idéal pour les équipes qui veulent réduire le risque commercial de leur croissance européenne.", "m3.inc1": "Conditions commerciales liées au pipeline qualifié ou au chiffre d'affaires signé.", "m3.inc2": "Incitations alignées — nous ne gagnons que si votre croissance européenne gagne aussi.", "m3.inc3": "Généralement combiné avec une Mission ou une Direction à Temps Partagé.", "m4.h": "Direction commerciale à temps partagé", "m4.p": "Un responsable commercial européen externalisé, à temps partiel ou complet.", "m4.best": "Idéal pour les équipes qui ont besoin d'un dirigeant commercial européen, pas seulement d'exécution.", "m4.inc1": "Un VP/Head of EMEA externalisé, à temps partiel ou complet.", "m4.inc2": "Vous représente sur le marché — partenaires, clients, recrutements.", "m4.inc3": "Une trajectoire intégrée vers un recrutement permanent lorsque le moment est venu.", "addon": "Option — Marketing et génération de demande : direction fractionnée GTM/marketing et exécution opérationnelle de demand-gen, disponible sur les quatre modèles ci-dessus.", "addon.h": "Marketing et génération de demande", "addon.best": "Idéal pour les équipes dont l'histoire de croissance a besoin d'un moteur de pipeline plus solide, pas seulement d'exécution commerciale.", "addon.inc1": "Direction fractionnée GTM/marketing sur le positionnement, les messages et la stratégie de canaux.", "addon.inc2": "Exécution opérationnelle de la génération de demande — campagnes, contenu et tests de canaux.", "addon.inc3": "S'ajoute à l'un des quatre modèles ci-dessus — jamais vendu comme mission autonome.", "faq.title": "Questions fréquentes", "faq.sub": "Ce que la plupart des équipes demandent avant leur premier échange avec nous.", "faq1.q": "À quelle vitesse pouvons-nous démarrer ?", "faq1.a": "La plupart des missions démarrent dans les deux à trois semaines suivant la signature — plus rapidement pour une Évaluation à Prix Fixe, dont le périmètre est le plus réduit.", "faq2.q": "Devons-nous relocaliser quelqu'un en Europe ?", "faq2.a": "Non. Nous sommes votre équipe commerciale européenne — c'est tout l'objet du modèle. Vous restez concentrés sur le produit et la croissance de votre marché domestique.", "faq3.q": "Que se passe-t-il après l'Évaluation à Prix Fixe ?", "faq3.a": "Vous recevez une recommandation claire de poursuivre ou non, avec la prochaine étape proposée — généralement une Mission ou une Direction à Temps Partagé. Aucune obligation de continuer.", "faq4.q": "Pouvons-nous combiner les modèles ?", "faq4.a": "Oui — la plupart des clients de long terme combinent les Incitations liées aux résultats ou l'option Marketing et génération de demande avec une Mission ou une Direction à Temps Partagé.", "days.title": "Les 90 premiers jours", "day1": "Découverte approfondie de votre activité, votre produit et votre proposition de valeur.", "day2": "Évaluation du marché et de la concurrence, affinement de l'ICP.", "day3": "Messages commerciaux et outillage des ventes.", "day4": "Introductions auprès de décideurs et premier pipeline.", "cta": "Vous ne savez pas quel modèle vous correspond ? Parlons-en →"}};
   var LANGS = ['en','es','fr'];
   function getLang(){
     try{
@@ -300,6 +411,70 @@
   window.PE_I18N = I18N;
   applyLang(getLang());
   window.__PE_APPLY_LANG__ = applyLang;
+
+  // --- Scroll-reveal for below-the-fold content ---
+  (function(){
+    var items = document.querySelectorAll('[data-reveal]');
+    if (!items.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){ entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){ obs.observe(el); });
+  })();
+
+  // --- Scroll-driven Growth Framework timeline ---
+  (function(){
+    var wrap = document.querySelector('.framework[data-progress]');
+    if (!wrap) return;
+    var fill = wrap.querySelector('.framework-fill');
+    var steps = Array.prototype.slice.call(wrap.querySelectorAll('.step'));
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var trackTop = 26, trackBottom = 26;
+    function update(){
+      var rect = wrap.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var trackHeight = Math.max(0, wrap.offsetHeight - trackTop - trackBottom);
+      var startPoint = vh * 0.82;
+      var endPoint = vh * 0.28;
+      var total = rect.height + (startPoint - endPoint);
+      var passed = startPoint - rect.top;
+      var progress = total > 0 ? passed / total : 0;
+      progress = Math.max(0, Math.min(1, progress));
+      var h = reduced ? (progress > 0.02 ? trackHeight : 0) : progress * trackHeight;
+      if (fill) fill.style.height = h + 'px';
+      steps.forEach(function(step){
+        var dotOffset = step.offsetTop; // .step's offsetParent is .framework itself (position:relative)
+        if (h >= dotOffset - trackTop + 22) step.classList.add('is-active');
+        else if (!reduced) step.classList.remove('is-active');
+      });
+    }
+    var ticking = false;
+    function onScroll(){
+      if (!ticking){ ticking = true; requestAnimationFrame(function(){ update(); ticking = false; }); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+
+  // --- FAQ accordion: keep only one open at a time (progressive enhancement) ---
+  (function(){
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function(item){
+      item.addEventListener('toggle', function(){
+        if (item.open){
+          items.forEach(function(other){ if (other !== item) other.open = false; });
+        }
+      });
+    });
+  })();
 })();
 
 
