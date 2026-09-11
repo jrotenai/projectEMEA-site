@@ -57,18 +57,89 @@
     .brand svg{width:22px;height:22px;}
   }
 
-  .hero{padding:clamp(48px,6vw,84px) 0 clamp(40px,5vw,64px);text-align:center;}
   .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
     color:var(--teal);margin:0 0 16px;}
   h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,1.3rem + 3.4vw,3.6rem);
     line-height:1.08;letter-spacing:-.01em;margin:0 0 20px;text-wrap:balance;}
-  .hero p{font-size:1.15rem;line-height:1.62;color:var(--ink-soft);max-width:60ch;margin:0 auto 32px;}
   .btn-primary{display:inline-block;background:var(--gold);color:var(--paper);text-decoration:none;
     border-radius:8px;padding:14px 26px;font-size:.96rem;font-weight:600;border:none;cursor:pointer;
     font-family:var(--font-display);transition:background .15s,transform .15s,box-shadow .15s;}
   .btn-primary:hover{background:var(--gold-strong);transform:translateY(-1px);box-shadow:var(--shadow);}
   .btn-primary:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
     outline:2px solid var(--gold);outline-offset:2px;}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);
+    border:1px solid var(--line);border-radius:8px;padding:13px 22px;font-size:.94rem;font-weight:600;
+    font-family:var(--font-display);text-decoration:none;transition:border-color .15s,color .15s,transform .15s;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px);}
+
+  /* ---- Hero v2: two-column, floating cards, parallax, vector network ---- */
+  .hero-v2{padding:clamp(56px,8vw,108px) 0 clamp(48px,6vw,84px);position:relative;overflow:hidden;}
+  .hero-v2 .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;}
+  .hero-copy{text-align:left;}
+  .hero-copy .eyebrow, .hero-copy h1{text-align:left;}
+  .hero-copy p.lead{font-size:1.15rem;line-height:1.62;color:var(--ink-soft);max-width:52ch;margin:0 0 32px;}
+  .hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero-chips-mobile{display:none;}
+  @media (max-width:900px){
+    .hero-v2 .wrap{grid-template-columns:1fr;gap:12px;}
+    .hero-copy, .hero-copy .eyebrow, .hero-copy h1{text-align:center;}
+    .hero-copy p.lead{margin-inline:auto;}
+    .hero-cta-row{justify-content:center;}
+  }
+  @media (max-width:640px){
+    .hero-visual{display:none;}
+    .hero-chips-mobile{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+    .hero-chips-mobile .chip{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;
+      padding:10px 14px;text-align:center;min-width:96px;}
+    .hero-chips-mobile .chip-label{display:block;font-family:var(--font-mono);font-size:.6rem;
+      letter-spacing:.05em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+    .hero-chips-mobile .chip-stat{display:block;font-family:var(--font-display);font-weight:700;
+      font-size:.9rem;color:var(--ink);}
+  }
+
+  .hero-visual{position:relative;height:clamp(320px,34vw,460px);}
+  .hero-orb{position:absolute;inset:-10%;border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle at 38% 32%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 62%);}
+  .hero-network{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;}
+  .hero-network .link{fill:none;stroke:var(--line);stroke-width:1.4;stroke-dasharray:5 6;
+    animation:pe-dashflow 14s linear infinite;}
+  .hero-network .node{fill:var(--gold);}
+  .hero-network .node-ring{fill:none;stroke:var(--gold);stroke-width:1;opacity:.35;}
+  .hero-network .node-pulse{animation:pe-pulse 3.2s ease-in-out infinite;transform-origin:center;
+    transform-box:fill-box;}
+  @keyframes pe-dashflow{ to{ stroke-dashoffset:-220; } }
+  @keyframes pe-pulse{ 0%,100%{ opacity:.4;transform:scale(1); } 50%{ opacity:1;transform:scale(1.35); } }
+
+  .float-card{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 1px 2px rgba(17,20,18,.06), 0 20px 40px -18px rgba(17,20,18,.22);padding:16px 18px;}
+  .float-card .fc-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--teal);margin:0 0 8px;}
+  .float-card .fc-title{font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--ink);
+    margin:0;line-height:1.3;}
+  .float-card .fc-stat{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--gold);
+    margin:0;}
+  .float-card .fc-sub{font-size:.78rem;color:var(--ink-soft);margin:6px 0 0;line-height:1.4;}
+  .float-card .fc-spark{display:block;width:100%;height:34px;}
+  .float-card .fc-spark polyline{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;
+    stroke-linejoin:round;}
+  .card-a{top:4%;right:0;width:198px;z-index:4;}
+  .card-b{top:46%;left:0;width:190px;z-index:3;}
+  .card-c{bottom:2%;right:16%;width:224px;z-index:2;}
+  @media (max-width:900px){
+    .card-a{top:0;right:2%;width:180px;}
+    .card-b{top:42%;left:0;width:174px;}
+    .card-c{bottom:0;right:4%;width:206px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-network .link, .hero-network .node-pulse{animation:none;}
+  }
+
+  /* Page-header accent glow (Who/How/Engagement/Contact) */
+  .page-header{position:relative;overflow:hidden;}
+  .page-header::before{content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);
+    width:640px;height:320px;pointer-events:none;z-index:0;
+    background:radial-gradient(closest-side, color-mix(in srgb, var(--gold) 13%, transparent), transparent 70%);}
+  .page-header .wrap{position:relative;z-index:1;}
 
   .strip{background:var(--paper-raised);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:38px 0;}
   .strip p{max-width:68ch;margin:0 auto;text-align:center;font-size:1.05rem;line-height:1.6;}
@@ -322,6 +393,62 @@
       });
     }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
     items.forEach(function(el){ obs.observe(el); });
+  })();
+
+  // --- Hero visual: idle float + pointer parallax on floating cards ---
+  (function(){
+    var visual = document.querySelector('.hero-visual');
+    if (!visual) return;
+    var cards = Array.prototype.slice.call(visual.querySelectorAll('.float-card'));
+    if (!cards.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    var depths = [0.55, 0.85, 0.4];
+    var speeds = [0.9, 1.3, 0.7];
+    var phases = [0, 2.1, 4.2];
+    var px = 0, py = 0, targetPx = 0, targetPy = 0;
+    var raf = null;
+
+    function onMove(e){
+      var rect = visual.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      targetPx = ((e.clientX - cx) / (rect.width / 2)) || 0;
+      targetPy = ((e.clientY - cy) / (rect.height / 2)) || 0;
+      targetPx = Math.max(-1, Math.min(1, targetPx));
+      targetPy = Math.max(-1, Math.min(1, targetPy));
+    }
+    window.addEventListener('mousemove', onMove, {passive:true});
+    visual.addEventListener('mouseleave', function(){ targetPx = 0; targetPy = 0; });
+
+    var start = null;
+    function tick(ts){
+      if (start === null) start = ts;
+      var t = (ts - start) / 1000;
+      px += (targetPx - px) * 0.06;
+      py += (targetPy - py) * 0.06;
+      cards.forEach(function(card, i){
+        var depth = depths[i % depths.length];
+        var speed = speeds[i % speeds.length];
+        var phase = phases[i % phases.length];
+        var floatX = Math.sin(t * speed + phase) * 6;
+        var floatY = Math.cos(t * speed * 0.8 + phase) * 8;
+        var parX = px * 14 * depth;
+        var parY = py * 14 * depth;
+        card.style.transform = 'translate3d(' + (floatX + parX).toFixed(2) + 'px,' + (floatY + parY).toFixed(2) + 'px,0)';
+      });
+      raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+
+    var visObs = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting && raf){ cancelAnimationFrame(raf); raf = null; }
+        else if (entry.isIntersecting && !raf){ start = null; raf = requestAnimationFrame(tick); }
+      });
+    }, {threshold:0}) : null;
+    if (visObs) visObs.observe(visual);
   })();
 
   // --- Scroll-driven Growth Framework timeline ---
