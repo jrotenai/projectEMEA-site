@@ -175,7 +175,7 @@
   .section-head{display:grid;grid-template-columns:auto 1fr;gap:0 28px;align-items:start;margin-bottom:52px;}
   .section-head .idx{font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;
     color:var(--brass);padding-top:.7em;white-space:nowrap;}
-  .section-head .sh-body{max-width:62ch;}
+  .section-head .sh-body{min-width:0;}
   .section-head .sh-sub{margin:16px 0 0;color:var(--ink-soft);font-size:1.02rem;max-width:56ch;}
   @media (max-width:620px){
     .section-head{grid-template-columns:1fr;gap:14px;}
@@ -231,19 +231,12 @@
   .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:36px;}
 
   /* Proof facts, moved out of the visual so the visual tells one story */
-  .hero-facts{display:grid;grid-template-columns:auto 1fr;gap:1px;margin-top:44px;
-    background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .hero-facts .fact{background:var(--paper);padding:18px 22px 18px 0;}
-  .hero-facts .fact + .fact{padding-left:22px;}
+  .hero-facts{margin-top:40px;}
+  .hero-facts .fact{padding:0;}
   .f-label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:500;
     letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
   .f-value{display:block;font-family:var(--font-display);font-weight:400;font-size:1.08rem;
     line-height:1.3;letter-spacing:-.01em;color:var(--ink);}
-  @media (max-width:520px){
-    .hero-facts{grid-template-columns:1fr;}
-    .hero-facts .fact{padding:16px 0;}
-    .hero-facts .fact + .fact{padding-left:0;}
-  }
 
   .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;
     padding-block:12px;}
@@ -458,7 +451,7 @@
   .proof strong{font-weight:400;color:var(--brass-deep);font-style:italic;}
   @media (max-width:620px){ .proof{grid-template-columns:1fr;gap:16px;} .proof .idx{padding-top:0;} }
 
-  .quote{max-width:42ch;margin:0 auto;text-align:center;position:relative;}
+  .quote{max-width:54rem;margin:0 auto;text-align:center;position:relative;}
   .quote blockquote{font-family:var(--font-display);font-style:italic;font-weight:300;
     font-size:clamp(1.5rem,1.2rem + 1.5vw,2.5rem);line-height:1.26;letter-spacing:-.022em;
     margin:0;color:var(--ink);text-wrap:balance;}
@@ -560,8 +553,6 @@
     text-transform:uppercase;color:var(--ink-faint);margin:0 0 5px;}
   .direct dd{margin:0 0 18px;font-size:1rem;color:var(--ink);}
   .direct dd:last-of-type{margin-bottom:0;}
-  .direct .note{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--brass);margin:22px 0 0;line-height:1.7;}
 </style>
 
 <div class="scroll-rail" aria-hidden="true"><span></span></div>
@@ -597,7 +588,7 @@
 
 <section class="page-header">
   <div class="wrap">
-    <h1><span class="kt-line"><span class="kt-inner">Engagement</span></span><span class="kt-line"><span class="kt-inner">models</span></span></h1>
+    <h1><span class="kt-line"><span class="kt-inner">Engagement models</span></span></h1>
     <p class="lead">Start where the evidence takes you. Most clients end up combining two.</p>
   </div>
 </section>
@@ -650,7 +641,7 @@
     <div class="section-head" data-kt>
       <p class="idx">01 / Questions</p>
       <div class="sh-body">
-        <h2><span class="kt-line"><span class="kt-inner">Asked before</span></span><span class="kt-line"><span class="kt-inner">every first call</span></span></h2>
+        <h2><span class="kt-line"><span class="kt-inner">Asked before every first call</span></span></h2>
         
       </div>
     </div>

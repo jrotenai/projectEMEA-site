@@ -175,7 +175,7 @@
   .section-head{display:grid;grid-template-columns:auto 1fr;gap:0 28px;align-items:start;margin-bottom:52px;}
   .section-head .idx{font-family:var(--font-mono);font-size:.7rem;font-weight:500;letter-spacing:.14em;
     color:var(--brass);padding-top:.7em;white-space:nowrap;}
-  .section-head .sh-body{max-width:62ch;}
+  .section-head .sh-body{min-width:0;}
   .section-head .sh-sub{margin:16px 0 0;color:var(--ink-soft);font-size:1.02rem;max-width:56ch;}
   @media (max-width:620px){
     .section-head{grid-template-columns:1fr;gap:14px;}
@@ -231,19 +231,12 @@
   .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:36px;}
 
   /* Proof facts, moved out of the visual so the visual tells one story */
-  .hero-facts{display:grid;grid-template-columns:auto 1fr;gap:1px;margin-top:44px;
-    background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .hero-facts .fact{background:var(--paper);padding:18px 22px 18px 0;}
-  .hero-facts .fact + .fact{padding-left:22px;}
+  .hero-facts{margin-top:40px;}
+  .hero-facts .fact{padding:0;}
   .f-label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:500;
     letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
   .f-value{display:block;font-family:var(--font-display);font-weight:400;font-size:1.08rem;
     line-height:1.3;letter-spacing:-.01em;color:var(--ink);}
-  @media (max-width:520px){
-    .hero-facts{grid-template-columns:1fr;}
-    .hero-facts .fact{padding:16px 0;}
-    .hero-facts .fact + .fact{padding-left:0;}
-  }
 
   .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;
     padding-block:12px;}
@@ -458,7 +451,7 @@
   .proof strong{font-weight:400;color:var(--brass-deep);font-style:italic;}
   @media (max-width:620px){ .proof{grid-template-columns:1fr;gap:16px;} .proof .idx{padding-top:0;} }
 
-  .quote{max-width:42ch;margin:0 auto;text-align:center;position:relative;}
+  .quote{max-width:54rem;margin:0 auto;text-align:center;position:relative;}
   .quote blockquote{font-family:var(--font-display);font-style:italic;font-weight:300;
     font-size:clamp(1.5rem,1.2rem + 1.5vw,2.5rem);line-height:1.26;letter-spacing:-.022em;
     margin:0;color:var(--ink);text-wrap:balance;}
@@ -560,8 +553,6 @@
     text-transform:uppercase;color:var(--ink-faint);margin:0 0 5px;}
   .direct dd{margin:0 0 18px;font-size:1rem;color:var(--ink);}
   .direct dd:last-of-type{margin-bottom:0;}
-  .direct .note{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--brass);margin:22px 0 0;line-height:1.7;}
 </style>
 
 <div class="scroll-rail" aria-hidden="true"><span></span></div>
@@ -597,7 +588,7 @@
 
 <section class="page-header">
   <div class="wrap">
-    <h1><span class="kt-line"><span class="kt-inner">The European</span></span><span class="kt-line"><span class="kt-inner">Growth Framework&trade;</span></span></h1>
+    <h1><span class="kt-line"><span class="kt-inner">The European Growth Framework&trade;</span></span></h1>
     <p class="lead">Five phases. One team. Your name on the work.</p>
   </div>
 </section>
@@ -689,7 +680,7 @@
       <div class="pillar" data-reveal>
         <p class="p-idx">01</p>
         <h3>Market intelligence</h3>
-        <p>Market prioritisation, ICP definition, routes to market.</p>
+        <p>Market prioritization, ICP definition, routes to market.</p>
       </div>
       <div class="pillar" data-reveal>
         <p class="p-idx">02</p>
@@ -726,7 +717,7 @@
     <div class="section-head" data-kt>
       <p class="idx">02 / Engagement model</p>
       <div class="sh-body">
-        <h2><span class="kt-line"><span class="kt-inner">How the work</span></span><span class="kt-line"><span class="kt-inner">is structured</span></span></h2>
+        <h2><span class="kt-line"><span class="kt-inner">How the work is structured</span></span></h2>
         <p class="sh-sub">Seven things we are engaged to do. Most clients run several at once.</p>
       </div>
     </div>
@@ -740,7 +731,7 @@
     <div class="section-head" data-kt>
       <p class="idx">03 / First 90 days</p>
       <div class="sh-body">
-        <h2><span class="kt-line"><span class="kt-inner">The first</span></span><span class="kt-line"><span class="kt-inner">ninety days</span></span></h2>
+        <h2><span class="kt-line"><span class="kt-inner">The first ninety days</span></span></h2>
         <p class="sh-sub">What is done, and in what order, before the first quarter closes.</p>
       </div>
     </div>
@@ -754,11 +745,11 @@
     <div class="section-head" data-kt>
       <p class="idx">04 / First 180 days</p>
       <div class="sh-body">
-        <h2><span class="kt-line"><span class="kt-inner">The first</span></span><span class="kt-line"><span class="kt-inner">180 days</span></span></h2>
+        <h2><span class="kt-line"><span class="kt-inner">The first 180 days</span></span></h2>
         <p class="sh-sub">By the half year, the question stops being whether Europe works and becomes how you want to run it.</p>
       </div>
     </div>
-    <div data-reveal><ol class="seq-list"><li><span class="n">01</span><span class="t">Pipeline mature enough to forecast.</span></li><li><span class="n">02</span><span class="t">Reference customers and case studies.</span></li><li><span class="n">03</span><span class="t">An active partner ecosystem.</span></li><li><span class="n">04</span><span class="t">A customer success programme holding churn down and accounts growing.</span></li><li><span class="n">05</span><span class="t">Recruitment planning, where it is warranted.</span></li><li><span class="n">06</span><span class="t">A decision: continue with Project EMEA, or transition to an internal European team.</span></li></ol></div>
+    <div data-reveal><ol class="seq-list"><li><span class="n">01</span><span class="t">Pipeline mature enough to forecast.</span></li><li><span class="n">02</span><span class="t">Reference customers and case studies.</span></li><li><span class="n">03</span><span class="t">An active partner ecosystem.</span></li><li><span class="n">04</span><span class="t">A customer success program holding churn down and accounts growing.</span></li><li><span class="n">05</span><span class="t">Recruitment planning, where it is warranted.</span></li><li><span class="n">06</span><span class="t">A decision: continue with Project EMEA, or transition to an internal European team.</span></li></ol></div>
   </div>
 </section>
 
@@ -768,7 +759,7 @@
     <div class="section-head" data-kt>
       <p class="idx">05 / The investor case</p>
       <div class="sh-body">
-        <h2><span class="kt-line"><span class="kt-inner">Why investors</span></span><span class="kt-line"><span class="kt-inner">like this model</span></span></h2>
+        <h2><span class="kt-line"><span class="kt-inner">Why investors like this model</span></span></h2>
         
         <div class="prose">
           <p>The model preserves capital. Markets get validated and revenue gets created before money
@@ -794,7 +785,7 @@
   <div class="wrap">
     <div class="quote" data-reveal>
       <span class="mark" aria-hidden="true">&ldquo;</span>
-      <blockquote>Our objective is to become indistinguishable from your own commercial organisation.</blockquote>
+      <blockquote>Our objective is to become indistinguishable from your own commercial organization.</blockquote>
     </div>
   </div>
 </section>
