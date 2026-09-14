@@ -150,7 +150,7 @@
     text-transform:uppercase;color:var(--brass);margin:0 0 22px;}
 
   h1{font-family:var(--font-display);font-weight:300;
-    font-size:clamp(2.5rem,1.5rem + 4.4vw,5rem);line-height:1.0;letter-spacing:-.022em;
+    font-size:clamp(2.4rem,1.5rem + 3.5vw,4.15rem);line-height:1.04;letter-spacing:-.022em;
     margin:0 0 26px;text-wrap:balance;}
   h1 .accent{font-style:italic;font-weight:200;color:var(--brass-deep);}
 
@@ -225,57 +225,81 @@
   /* ---------------------------------------------------------------
      Hero
   ---------------------------------------------------------------- */
-  .hero{padding:clamp(64px,8.5vw,132px) 0 clamp(56px,6vw,96px);position:relative;overflow:hidden;}
-  .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center;}
+  .hero{padding:clamp(60px,7.5vw,116px) 0 clamp(56px,6vw,96px);position:relative;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.16fr .84fr;gap:52px;align-items:center;}
   .hero-copy{position:relative;z-index:2;}
-  .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:38px;}
-  .hero-chips{display:none;}
+  .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:36px;}
 
-  .hero-visual{position:relative;height:clamp(360px,36vw,500px);}
-  .hero-grid-lines{position:absolute;inset:-20% -10%;z-index:0;pointer-events:none;opacity:.5;}
+  /* Proof facts, moved out of the visual so the visual tells one story */
+  .hero-facts{display:grid;grid-template-columns:auto 1fr;gap:1px;margin-top:44px;
+    background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .hero-facts .fact{background:var(--paper);padding:18px 22px 18px 0;}
+  .hero-facts .fact + .fact{padding-left:22px;}
+  .f-label{display:block;font-family:var(--font-mono);font-size:.6rem;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
+  .f-value{display:block;font-family:var(--font-display);font-weight:400;font-size:1.08rem;
+    line-height:1.3;letter-spacing:-.01em;color:var(--ink);}
+  @media (max-width:520px){
+    .hero-facts{grid-template-columns:1fr;}
+    .hero-facts .fact{padding:16px 0;}
+    .hero-facts .fact + .fact{padding-left:0;}
+  }
+
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;
+    padding-block:12px;}
+  .hero-grid-lines{position:absolute;inset:-14% -10%;z-index:0;pointer-events:none;opacity:.45;}
   .hero-grid-lines line{stroke:var(--line);stroke-width:1;}
-  .hero-meridian{position:absolute;inset:-6% -4% -6% -4%;z-index:0;pointer-events:none;overflow:visible;}
-  .hero-meridian .ring{fill:none;stroke:var(--line-strong);stroke-width:1;}
-  .hero-meridian .arc{fill:none;stroke:var(--brass);stroke-width:1.4;opacity:.5;
-    stroke-dasharray:4 7;animation:pe-dash 18s linear infinite;}
-  .hero-meridian .sweep{fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;}
-  .hero-glow{position:absolute;inset:-14%;z-index:0;pointer-events:none;border-radius:50%;
-    background:radial-gradient(circle at 44% 38%, color-mix(in srgb, var(--brass) 15%, transparent), transparent 66%);}
-  @keyframes pe-dash{ to{ stroke-dashoffset:-240; } }
-
-  .float-card{position:absolute;z-index:3;background:var(--paper);border:1px solid var(--line);
-    border-radius:3px;box-shadow:var(--shadow-lift);padding:18px 20px;will-change:transform;}
-  .float-card::before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
-    background:var(--brass);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease);}
-  .float-card.is-visible::before{transform:scaleX(1);}
-  .fc-label{font-family:var(--font-mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--brass);margin:0 0 10px;}
-  .fc-stat{font-family:var(--font-display);font-weight:300;font-size:1.75rem;line-height:1;
-    letter-spacing:-.02em;color:var(--ink);margin:0;}
-  .fc-title{font-family:var(--font-display);font-weight:400;font-size:1.02rem;line-height:1.28;
-    letter-spacing:-.01em;color:var(--ink);margin:0;}
-  .fc-sub{font-size:.78rem;color:var(--ink-soft);margin:8px 0 0;line-height:1.45;}
-  .card-a{top:2%;right:0;width:206px;}
-  .card-b{top:44%;left:-2%;width:196px;}
-  .card-c{bottom:1%;right:13%;width:238px;}
+  .hero-rings{position:absolute;inset:2% -6%;z-index:0;pointer-events:none;overflow:visible;}
+  .hero-rings .ring{fill:none;stroke:var(--line-strong);stroke-width:1;}
+  .hero-glow{position:absolute;inset:-12%;z-index:0;pointer-events:none;border-radius:50%;
+    background:radial-gradient(circle at 46% 40%, color-mix(in srgb, var(--brass) 14%, transparent), transparent 66%);}
+  .hero-process{position:relative;z-index:3;width:100%;max-width:430px;}
 
   @media (max-width:980px){
-    .hero .wrap{grid-template-columns:1fr;gap:20px;}
+    .hero .wrap{grid-template-columns:1fr;gap:26px;}
     .hero-copy .lead{max-width:60ch;}
-    .card-a{top:0;right:1%;width:190px;}
-    .card-b{top:42%;left:0;width:182px;}
-    .card-c{bottom:0;right:3%;width:214px;}
+    .hero-process{max-width:390px;}
   }
-  @media (max-width:680px){
-    .hero-visual{display:none;}
-    .hero-chips{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:40px;
-      background:var(--line);border:1px solid var(--line);}
-    .hero-chips .chip{background:var(--paper);padding:16px 14px;}
-    .hero-chips .chip:last-child{grid-column:1 / -1;}
-    .chip-label{display:block;font-family:var(--font-mono);font-size:.58rem;font-weight:500;
-      letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:6px;}
-    .chip-stat{display:block;font-family:var(--font-display);font-weight:400;font-size:1.02rem;
-      line-height:1.25;color:var(--ink);}
+  @media (max-width:520px){ .hero-process{max-width:320px;} }
+
+  /* ---------------------------------------------------------------
+     The process: a serpentine path through the five phases.
+     Nodes sit at fixed points on the path, so the whole thing renders
+     correctly with no JS -- script only advances which step is active.
+  ---------------------------------------------------------------- */
+  .process{position:relative;width:100%;}
+  .process svg{display:block;width:100%;height:auto;overflow:visible;}
+  .p-track{fill:none;stroke:var(--line-strong);stroke-width:1.5;}
+  .p-draw{fill:none;stroke:var(--brass);stroke-width:1.5;stroke-linecap:round;
+    transition:stroke-dashoffset 1.15s var(--ease);}
+  .p-ring{fill:none;stroke:var(--line-strong);stroke-width:1.2;opacity:.8;
+    transform-box:fill-box;transform-origin:center;
+    transition:stroke .55s var(--ease),opacity .55s var(--ease);}
+  .p-dot{fill:var(--paper);stroke:var(--line-strong);stroke-width:1.5;
+    transition:fill .55s var(--ease),stroke .55s var(--ease);}
+  .p-idx{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:1.6px;
+    fill:var(--ink-faint);transition:fill .55s var(--ease);}
+  .p-name{font-family:var(--font-display);font-size:23px;font-weight:400;
+    fill:var(--ink-faint);transition:fill .55s var(--ease);}
+
+  .p-step.is-done .p-dot{fill:var(--brass);stroke:var(--brass);}
+  .p-step.is-done .p-ring{stroke:var(--brass);opacity:.4;}
+  .p-step.is-done .p-idx{fill:var(--brass);}
+  .p-step.is-done .p-name{fill:var(--ink-soft);}
+
+  .p-step.is-active .p-dot{fill:var(--brass);stroke:var(--brass);}
+  .p-step.is-active .p-ring{stroke:var(--brass);opacity:1;
+    animation:pe-ring 2.8s ease-in-out infinite;}
+  .p-step.is-active .p-idx{fill:var(--brass);}
+  .p-step.is-active .p-name{fill:var(--ink);}
+
+  @keyframes pe-ring{
+    0%,100%{ transform:scale(1); opacity:.95; }
+    50%{ transform:scale(1.24); opacity:.45; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .p-step.is-active .p-ring{animation:none;}
+    .p-draw{transition:none;}
   }
 
   /* ---------------------------------------------------------------
@@ -334,15 +358,7 @@
     line-height:.82;letter-spacing:-.04em;color:var(--brass);display:block;margin-bottom:8px;
     transition:opacity .4s var(--ease),transform .4s var(--ease);}
   .scrolly-num.swapping{opacity:0;transform:translateY(-12px);}
-  .scrolly-rail{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line);}
-  .scrolly-rail li{position:relative;border-bottom:1px solid var(--line);padding:13px 0 13px 22px;
-    font-family:var(--font-body);font-size:1rem;font-weight:500;color:var(--ink-faint);
-    transition:color .35s var(--ease),padding-left .35s var(--ease);}
-  .scrolly-rail li::before{content:"";position:absolute;left:0;top:50%;width:12px;height:1px;
-    background:var(--brass);transform:scaleX(0);transform-origin:0 50%;
-    transition:transform .35s var(--ease);}
-  .scrolly-rail li.is-active{color:var(--ink);padding-left:30px;}
-  .scrolly-rail li.is-active::before{transform:scaleX(1);}
+  .scrolly-sticky .process{margin-top:24px;max-width:365px;}
 
   .scrolly-steps{display:flex;flex-direction:column;gap:clamp(56px,7vw,104px);
     padding-block:clamp(8px,3vw,48px);}
@@ -357,7 +373,7 @@
     .scrolly{grid-template-columns:1fr;gap:16px;}
     .scrolly-sticky{position:static;}
     .scrolly-num{display:none;}
-    .scrolly-rail{display:none;}
+    .scrolly-sticky .process{display:none;}
     .scrolly-steps{gap:44px;padding-block:0;}
     .scrolly-step{max-width:none;border-top:1px solid var(--line);padding-top:26px;}
   }
@@ -590,7 +606,43 @@
     <div class="scrolly" data-scrolly>
       <div class="scrolly-sticky">
         <span class="scrolly-num" aria-hidden="true">01</span>
-        <ol class="scrolly-rail" aria-hidden="true"><li>Understand</li><li>Launch</li><li>Grow</li><li>Retain</li><li>Scale</li></ol>
+        
+      <div class="process" data-process="scroll">
+        <svg viewBox="0 0 460 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+          <path class="p-track" d="M 92 40 C 150 76 150 110 92 146 C 34 182 34 216 92 252 C 150 288 150 322 92 358 C 34 394 34 428 92 464"/>
+          <path class="p-draw" d="M 92 40 C 150 76 150 110 92 146 C 34 182 34 216 92 252 C 150 288 150 322 92 358 C 34 394 34 428 92 464"/>
+          <g class="p-step is-active">
+            <circle class="p-ring" cx="92" cy="40" r="15"/>
+            <circle class="p-dot" cx="92" cy="40" r="5.5"/>
+            <text class="p-idx" x="182" y="33">01</text>
+            <text class="p-name" x="182" y="57">Understand</text>
+          </g>
+          <g class="p-step">
+            <circle class="p-ring" cx="92" cy="146" r="15"/>
+            <circle class="p-dot" cx="92" cy="146" r="5.5"/>
+            <text class="p-idx" x="182" y="139">02</text>
+            <text class="p-name" x="182" y="163">Launch</text>
+          </g>
+          <g class="p-step">
+            <circle class="p-ring" cx="92" cy="252" r="15"/>
+            <circle class="p-dot" cx="92" cy="252" r="5.5"/>
+            <text class="p-idx" x="182" y="245">03</text>
+            <text class="p-name" x="182" y="269">Grow</text>
+          </g>
+          <g class="p-step">
+            <circle class="p-ring" cx="92" cy="358" r="15"/>
+            <circle class="p-dot" cx="92" cy="358" r="5.5"/>
+            <text class="p-idx" x="182" y="351">04</text>
+            <text class="p-name" x="182" y="375">Retain</text>
+          </g>
+          <g class="p-step">
+            <circle class="p-ring" cx="92" cy="464" r="15"/>
+            <circle class="p-dot" cx="92" cy="464" r="5.5"/>
+            <text class="p-idx" x="182" y="457">05</text>
+            <text class="p-name" x="182" y="481">Scale</text>
+          </g>
+        </svg>
+      </div>
       </div>
       <div class="scrolly-steps">
       <div class="scrolly-step">
@@ -844,70 +896,90 @@
     update();
   })();
 
-  /* ---- Hero floating cards: idle drift + pointer parallax ---- */
-  (function(){
-    var visual = document.querySelector('.hero-visual');
-    if (!visual || reduced) return;
-    var cards = Array.prototype.slice.call(visual.querySelectorAll('.float-card'));
-    if (!cards.length) return;
+  /* ---- The process component ----------------------------------------
+     Attaches a setStep controller to each [data-process] element. The
+     markup already renders correctly with step 1 active and the full path
+     drawn, so this only ever advances state -- it never reveals content.
+  --------------------------------------------------------------------- */
+  function initProcess(el){
+    var draw = el.querySelector('.p-draw');
+    var steps = Array.prototype.slice.call(el.querySelectorAll('.p-step'));
+    if (!steps.length) return null;
 
-    var depths = [0.6, 0.95, 0.42];
-    var speeds = [0.62, 0.85, 0.48];
-    var phases = [0, 2.3, 4.4];
-    var px = 0, py = 0, tx = 0, ty = 0, raf = null, start = null, scrollY = 0;
-
-    window.addEventListener('mousemove', function(e){
-      var r = visual.getBoundingClientRect();
-      if (!r.width || !r.height) return;
-      tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width/2)) / (r.width/2)));
-      ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height/2)) / (r.height/2)));
-    }, {passive:true});
-    visual.addEventListener('mouseleave', function(){ tx = 0; ty = 0; });
-    window.addEventListener('scroll', function(){ scrollY = window.scrollY; }, {passive:true});
-
-    function tick(ts){
-      if (start === null){ start = ts; }
-      var t = (ts - start) / 1000;
-      px += (tx - px) * 0.055;
-      py += (ty - py) * 0.055;
-      cards.forEach(function(card, i){
-        var d = depths[i % depths.length];
-        var s = speeds[i % speeds.length];
-        var ph = phases[i % phases.length];
-        var fx = Math.sin(t * s + ph) * 5;
-        var fy = Math.cos(t * s * 0.78 + ph) * 7;
-        var sx = px * 15 * d;
-        var sy = py * 15 * d + scrollY * 0.035 * d;
-        card.style.transform = 'translate3d(' + (fx + sx).toFixed(2) + 'px,' + (fy + sy).toFixed(2) + 'px,0)';
-      });
-      raf = requestAnimationFrame(tick);
+    var len = 0;
+    if (draw && typeof draw.getTotalLength === 'function'){
+      try { len = draw.getTotalLength(); } catch (e) { len = 0; }
     }
-    raf = requestAnimationFrame(tick);
+    if (len){
+      draw.style.strokeDasharray = len;
+      draw.style.strokeDashoffset = len;
+    }
+
+    var current = -1;
+    function setStep(i){
+      if (i === current || i < 0 || i >= steps.length) return;
+      current = i;
+      steps.forEach(function(s, n){
+        s.classList.toggle('is-active', n === i);
+        s.classList.toggle('is-done', n < i);
+      });
+      if (len){
+        var frac = steps.length > 1 ? i / (steps.length - 1) : 1;
+        draw.style.strokeDashoffset = (len * (1 - frac)).toFixed(2);
+      }
+    }
+
+    var api = {setStep: setStep, count: steps.length, el: el};
+    el.__peProcess = api;
+    setStep(0);
+    return api;
+  }
+
+  var processes = Array.prototype.slice.call(document.querySelectorAll('[data-process]'))
+    .map(initProcess).filter(Boolean);
+
+  /* ---- Hero process: cycles through the phases on its own ---- */
+  (function(){
+    var api = processes.filter(function(p){
+      return p.el.getAttribute('data-process') === 'auto';
+    })[0];
+    if (!api || reduced) return;
+
+    var i = 0, timer = null;
+    function advance(){
+      i = (i + 1) % api.count;
+      api.setStep(i);
+    }
+    function start(){ if (!timer) timer = setInterval(advance, 2900); }
+    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
 
     if ('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (!entry.isIntersecting && raf){ cancelAnimationFrame(raf); raf = null; }
-          else if (entry.isIntersecting && !raf){ start = null; raf = requestAnimationFrame(tick); }
-        });
-      }, {threshold:0}).observe(visual);
+        entries.forEach(function(e){ e.isIntersecting ? start() : stop(); });
+      }, {threshold:0.2}).observe(api.el);
+    } else {
+      start();
     }
+    document.addEventListener('visibilitychange', function(){
+      document.hidden ? stop() : start();
+    });
   })();
 
-  /* ---- Scrollytelling: Growth Framework ---- */
+  /* ---- Scrollytelling: the framework, driven by scroll position ---- */
   (function(){
     var root = document.querySelector('[data-scrolly]');
     if (!root) return;
     var numEl = root.querySelector('.scrolly-num');
-    var rail = Array.prototype.slice.call(root.querySelectorAll('.scrolly-rail li'));
     var steps = Array.prototype.slice.call(root.querySelectorAll('.scrolly-step'));
     if (!steps.length) return;
 
+    var api = processes.filter(function(p){ return root.contains(p.el); })[0];
     var current = -1;
+
     function setActive(i){
       if (i === current) return;
       current = i;
-      rail.forEach(function(li, n){ li.classList.toggle('is-active', n === i); });
+      if (api) api.setStep(i);
       if (!numEl) return;
       var label = String(i + 1).padStart(2, '0');
       if (reduced){ numEl.textContent = label; return; }
@@ -921,9 +993,7 @@
     if (!('IntersectionObserver' in window)){ setActive(0); return; }
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          setActive(steps.indexOf(entry.target));
-        }
+        if (entry.isIntersecting){ setActive(steps.indexOf(entry.target)); }
       });
     }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
     steps.forEach(function(s){ obs.observe(s); });
