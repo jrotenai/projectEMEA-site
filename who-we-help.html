@@ -226,7 +226,7 @@
      Hero
   ---------------------------------------------------------------- */
   .hero{padding:clamp(60px,7.5vw,116px) 0 clamp(56px,6vw,96px);position:relative;overflow:hidden;}
-  .hero .wrap{display:grid;grid-template-columns:1.16fr .84fr;gap:52px;align-items:center;}
+  .hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;}
   .hero-copy{position:relative;z-index:2;}
   .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:36px;}
 
@@ -242,18 +242,58 @@
     padding-block:12px;}
   .hero-grid-lines{position:absolute;inset:-14% -10%;z-index:0;pointer-events:none;opacity:.45;}
   .hero-grid-lines line{stroke:var(--line);stroke-width:1;}
-  .hero-rings{position:absolute;inset:2% -6%;z-index:0;pointer-events:none;overflow:visible;}
-  .hero-rings .ring{fill:none;stroke:var(--line-strong);stroke-width:1;}
   .hero-glow{position:absolute;inset:-12%;z-index:0;pointer-events:none;border-radius:50%;
-    background:radial-gradient(circle at 46% 40%, color-mix(in srgb, var(--brass) 14%, transparent), transparent 66%);}
-  .hero-process{position:relative;z-index:3;width:100%;max-width:430px;}
+    background:radial-gradient(circle at 50% 44%, color-mix(in srgb, var(--brass) 14%, transparent), transparent 66%);}
+  .hero-compass{position:relative;z-index:3;width:100%;max-width:540px;margin-inline:auto;}
 
   @media (max-width:980px){
-    .hero .wrap{grid-template-columns:1fr;gap:26px;}
+    .hero .wrap{grid-template-columns:1fr;gap:24px;}
     .hero-copy .lead{max-width:60ch;}
-    .hero-process{max-width:390px;}
+    .hero-compass{max-width:460px;}
   }
-  @media (max-width:520px){ .hero-process{max-width:320px;} }
+  @media (max-width:520px){ .hero-compass{max-width:100%;} }
+
+  /* ---------------------------------------------------------------
+     Compass dial (homepage hero)
+     Five phases sit 72 degrees apart on the ring. The needle rotates
+     with scroll position; the ring fills in behind it. Everything is
+     positioned in the markup, so it renders correctly with no JS.
+  ---------------------------------------------------------------- */
+  .compass{position:relative;width:100%;}
+  .compass svg{display:block;width:100%;height:auto;overflow:visible;}
+  .c-ring{fill:none;stroke:var(--line-strong);stroke-width:1;}
+  .c-ring-faint{fill:none;stroke:var(--line);stroke-width:1;}
+  .c-sweep{fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linecap:round;opacity:.85;}
+
+  .c-node{fill:var(--paper);stroke:var(--line-strong);stroke-width:1.6;
+    transition:fill .5s var(--ease),stroke .5s var(--ease);}
+  .c-node-ring{fill:none;stroke:var(--line-strong);stroke-width:1;opacity:.7;
+    transform-box:fill-box;transform-origin:center;
+    transition:stroke .5s var(--ease),opacity .5s var(--ease);}
+  .c-idx{font-family:var(--font-mono);font-size:12.5px;font-weight:500;letter-spacing:1.8px;
+    fill:var(--ink-faint);transition:fill .5s var(--ease);}
+  .c-name{font-family:var(--font-display);font-size:26px;font-weight:400;
+    fill:var(--ink-faint);transition:fill .5s var(--ease);}
+
+  .c-step.is-done .c-node{fill:var(--brass);stroke:var(--brass);}
+  .c-step.is-done .c-node-ring{stroke:var(--brass);opacity:.4;}
+  .c-step.is-done .c-idx{fill:var(--brass);}
+  .c-step.is-done .c-name{fill:var(--ink-soft);}
+
+  .c-step.is-active .c-node{fill:var(--brass);stroke:var(--brass);}
+  .c-step.is-active .c-node-ring{stroke:var(--brass);opacity:1;
+    animation:pe-ring 2.8s ease-in-out infinite;}
+  .c-step.is-active .c-idx{fill:var(--brass);}
+  .c-step.is-active .c-name{fill:var(--ink);}
+
+  .c-needle{transform-box:view-box;transform-origin:320px 240px;}
+  .c-n-north{fill:var(--brass);}
+  .c-n-south{fill:var(--umber);}
+  .c-hub{fill:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    .c-step.is-active .c-node-ring{animation:none;}
+  }
 
   /* ---------------------------------------------------------------
      The process: a serpentine path through the five phases.
@@ -796,31 +836,62 @@
   var processes = Array.prototype.slice.call(document.querySelectorAll('[data-process]'))
     .map(initProcess).filter(Boolean);
 
-  /* ---- Hero process: cycles through the phases on its own ---- */
+  /* ---- Hero compass: the needle tracks scroll position ----------------
+     Five stations 72 degrees apart, so the needle sweeps 288 degrees from
+     the first phase to the last across the hero's scroll range. At rest at
+     the top of the page it points at phase one, which is the correct still
+     frame. Under reduced motion it simply stays there.
+  --------------------------------------------------------------------- */
   (function(){
-    var api = processes.filter(function(p){
-      return p.el.getAttribute('data-process') === 'auto';
-    })[0];
-    if (!api || reduced) return;
+    var el = document.querySelector('[data-compass]');
+    if (!el) return;
+    var needle = el.querySelector('.c-needle');
+    var sweep = el.querySelector('.c-sweep');
+    var steps = Array.prototype.slice.call(el.querySelectorAll('.c-step'));
+    if (!steps.length) return;
 
-    var i = 0, timer = null;
-    function advance(){
-      i = (i + 1) % api.count;
-      api.setStep(i);
+    var SPAN = 288;                       // 4 gaps x 72 degrees
+    var circ = 0;
+    if (sweep && typeof sweep.getTotalLength === 'function'){
+      try { circ = sweep.getTotalLength(); } catch (e) { circ = 0; }
     }
-    function start(){ if (!timer) timer = setInterval(advance, 2900); }
-    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+    if (circ){
+      sweep.style.strokeDasharray = circ;
+      sweep.style.strokeDashoffset = circ;
+    }
 
-    if ('IntersectionObserver' in window){
-      new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ e.isIntersecting ? start() : stop(); });
-      }, {threshold:0.2}).observe(api.el);
-    } else {
-      start();
+    function apply(p){
+      if (needle) needle.style.transform = 'rotate(' + (p * SPAN).toFixed(2) + 'deg)';
+      if (circ) sweep.style.strokeDashoffset = (circ * (1 - p * (SPAN / 360))).toFixed(2);
+      var idx = Math.round(p * (steps.length - 1));
+      steps.forEach(function(st, n){
+        st.classList.toggle('is-active', n === idx);
+        st.classList.toggle('is-done', n < idx);
+      });
     }
-    document.addEventListener('visibilitychange', function(){
-      document.hidden ? stop() : start();
-    });
+
+    if (reduced){ apply(0); return; }
+
+    var hero = el.closest('.hero') || el.parentElement;
+    var target = 0, cur = 0, raf = null;
+
+    function measure(){
+      var range = Math.max(1, (hero.offsetHeight || window.innerHeight) * 0.85);
+      target = Math.max(0, Math.min(1, window.scrollY / range));
+    }
+    function tick(){
+      cur += (target - cur) * 0.12;
+      if (Math.abs(target - cur) < 0.0004) cur = target;
+      apply(cur);
+      raf = (cur !== target) ? requestAnimationFrame(tick) : null;
+    }
+    function onScroll(){
+      measure();
+      if (!raf) raf = requestAnimationFrame(tick);
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    measure(); cur = target; apply(cur);
   })();
 
   /* ---- Scrollytelling: the framework, driven by scroll position ---- */
